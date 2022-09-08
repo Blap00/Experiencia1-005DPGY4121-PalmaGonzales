@@ -1,0 +1,110 @@
+img{
+    max-width: 35%;
+}
+.azulito{
+    background-color: #B0E9FC;
+}
+.sep1{
+    padding: 0.3vw;
+    border-radius: 90%;
+}
+.div3{
+    height:10px;
+}
+.celestito{
+    background: #D9F6FF;
+    
+}
+.bodycol{
+    background-color: #CCDADF;
+}
+.porque{
+    position: relative;
+    left: 12%;
+}
+.porque2{
+    position: relative;
+    left: 15%;
+}
+.porque1{
+    position: relative;
+    left: 12%;
+}
+.footcol{
+    background-color: #B0E9FC;
+}
+.ema{
+    background-color: #B0E9FC;
+}
+.rectange5{
+    position: absolute;
+    width: 340px;
+    height: 71px;
+    left: 9px;
+    top: 193px;
+}
+@keyframes error {
+    5% {
+      padding-left: calc(var(--padding-button) - 8px);
+      padding-right: calc(var(--padding-button) + 8px);
+    }
+    10% {
+      padding-left: calc(var(--padding-button) + 7px);
+      padding-right: calc(var(--padding-button) - 7px);
+    }
+    20% {
+      padding-left: calc(var(--padding-button) - 6px);
+      padding-right: calc(var(--padding-button) + 6px);
+    }
+    30% {
+      padding-left: calc(var(--padding-button) + 5px);
+      padding-right: calc(var(--padding-button) - 5px);
+    }
+    40% {
+      padding-left: calc(var(--padding-button) - 4px);
+      padding-right: calc(var(--padding-button) + 4px);
+    }
+    50% {
+      padding-left: calc(var(--padding-button) + 3px);
+      padding-right: calc(var(--padding-button) - 3px);
+    }
+    60% {
+      padding-left: calc(var(--padding-button) - 2px);
+      padding-right: calc(var(--padding-button) + 2px);
+    }
+    70% {
+      padding-left: calc(var(--padding-button) + 1px);
+      padding-right: calc(var(--padding-button) - 1px);
+    }
+    80% {
+      padding-left: var(--padding-button);
+      padding-right: var(--padding-button);
+    }
+}
+.but1-anim:hover {
+    background-color: var(--color-secondary);
+}
+.but1-anim {
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    margin-left: 12px;
+    padding: 3px var(--padding-button);
+    transition: background-color .1s ease;
+}
+
+.blanquito{
+    background-color: #FFFFFF;
+    width: 90%;
+    height: 105%;
+    padding-left: 10px;
+    border-radius: 10%;
+    
+}
+.p1--1{
+    text-align: justify;
+    margin: 28%;
+    color: rgb(175 68 68);
+    text-shadow: 1px 1px 2px rgb(175 68 68);
+}
