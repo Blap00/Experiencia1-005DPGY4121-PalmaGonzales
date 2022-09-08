@@ -24,7 +24,7 @@ export class AppComponent {
     {
       icon: 'home-outline',
       name:  'Inicio',
-      redirecTo: '/inicio' 
+      redirecTo: '/inicio-inicio' 
     },
    
     {
@@ -42,18 +42,13 @@ export class AppComponent {
       name: 'Cerrar sesion', 
       redirecTo: '/inicio'
     },
-    {
-      icon:'eye-outline',
-      name: 'borrar despues/alumno', 
-      redirecTo: '/alumno'
-    },
     
   ];
   alumnocomponentes: ComponenteAlumno[]=[
     {
       icon: 'home-outline',
       name:  'Inicio',
-      redirecTo: '/inicio' 
+      redirecTo: '/alumno' 
     },
     {
       icon: 'book-outline',
