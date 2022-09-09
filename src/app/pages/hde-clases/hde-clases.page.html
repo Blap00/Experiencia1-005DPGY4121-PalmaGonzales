@@ -19,7 +19,7 @@
 
 <ion-content>
   <ion-list >
-    <ion-item class="horarios" href="/codigoqr">
+    <ion-item class="horarios" (click)="alerta()">
       <ion-thumbnail class="ion-margin-end">
         <img src="/assets/android.png" />
       </ion-thumbnail>
@@ -27,17 +27,17 @@
       <ion-label class="ion-text-wrap">11:31-13:50</ion-label>
   
     </ion-item>
-
-    <ion-item  class="horarios" href="/codigoqr">
+<!-- <ion-button class="horarios" (click)="alerta()" expand="" fill="" shape=""> -->
+    <ion-item  class="horarios" (click)="alerta()">
       <ion-thumbnail class="ion-margin-end">
         <img src="/assets/calidad.png" />
       </ion-thumbnail>
       <ion-label class="ion-text-wrap" >Calidad de Software</ion-label>
       <ion-label class="ion-text-wrap">14:00-15:30</ion-label>
-
     </ion-item>
+  <!-- </ion-button> -->
 
-    <ion-item class="horarios" href="/codigoqr">
+    <ion-item class="horarios"(click)="alerta()">
       <ion-thumbnail class="ion-margin-end">
         <img src="/assets/ingles.png" />
       </ion-thumbnail>
@@ -46,7 +46,7 @@
   
     </ion-item>
 
-    <ion-item class="horarios" href="/codigoqr">
+    <ion-item class="horarios" (click)="alerta()">
       <ion-thumbnail class="ion-margin-end">
         <img src="/assets/arquitectura.png" />
       </ion-thumbnail>
@@ -54,7 +54,7 @@
       <ion-label class="ion-text-wrap">17:30-18:50</ion-label>
 
     </ion-item>
-    <ion-item class="horarios" href="/codigoqr">
+    <ion-item class="horarios" (click)="alerta()">
       <ion-thumbnail class="ion-margin-end">
         <img src="/assets/estadistica.png" />
       </ion-thumbnail>
