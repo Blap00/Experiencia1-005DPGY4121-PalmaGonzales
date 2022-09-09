@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { MenuController } from '@ionic/angular'; 
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-escanearqr',
@@ -9,7 +10,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class EscanearqrPage implements OnInit {
 
-  constructor(private menuController : MenuController) { }
+  constructor(private menuController : MenuController,
+    private alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -31,6 +33,15 @@ export class EscanearqrPage implements OnInit {
   //   });
   // }
   
+  async alerta() {
+    const alert = await this.alertController.create({
+      header: '¿Estas Seguro?',
+      message: 'Recuerda que solo puedes escanear una vez durante el periodo entre tus clases',
+      buttons: ['OK'], 
+    });
+    await alert.present();
+  }
+
   mostrarMenu(){
 
   }
