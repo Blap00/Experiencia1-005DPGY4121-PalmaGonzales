@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular'; 
-import { AlertController , NavController } from '@ionic/angular';
+import { AlertController} from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-hde-clases',
   templateUrl: './hde-clases.page.html',
@@ -18,7 +19,7 @@ export class HdeClasesPage implements OnInit {
 
   constructor(private menuController: MenuController,
               private alertController: AlertController,
-              private navCtrl: NavController) { }
+              private routerLink: Router) { }
   handlerMessage = '';
   roleMessage = '';
   ngOnInit() {
@@ -33,7 +34,7 @@ export class HdeClasesPage implements OnInit {
           role: 'confirm',
           handler: () => {
             this.handlerMessage = 'Confirmo el QR, Abrir nuevo QR(prox)';
-            this.navCtrl.navigateRoot('/codigoqr')
+            this.routerLink.navigate(['/codigoqr'])
           },
         },
       ] 

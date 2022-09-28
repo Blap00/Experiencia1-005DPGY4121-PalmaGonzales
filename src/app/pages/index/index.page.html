@@ -28,7 +28,7 @@
     <!-- Creamos form solamente para ingresar correo -->
     <form #formulario="ngForm" >
       <div class="ema">
-        <ion-item  style="border-top-left-radius: 70%;border-top-right-radius: 70%; opacity: 75%; text-align: center;">
+        <ion-item  style="opacity: 75%; text-align: center;">
           <ion-label position="floating" >E-Mail <ion-text color="danger">*</ion-text></ion-label>
           <ion-input required type="email" placeholder="Introduzca su mail Institucional" name="email" [(ngModel)]="pusuario.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z\.]{6,20})([.])([a-zA-Z]{2,5})$"></ion-input>
         </ion-item>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController , NavController } from '@ionic/angular';
-interface Correo{
-  email: string;
-}
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+// interface Correo{
+//   email: string;
+// }  
 
 @Component({
   selector: 'app-index',
@@ -37,7 +38,7 @@ export class IndexPage implements OnInit {
   email=this.pusuario.email;
   correosplitted= this.pusuario.email.split("@",2)[1];  
   constructor(private alerController: AlertController,
-              private navController: NavController) { }
+              private routerLinks: Router) { }
   splitted= this.email.split("@", 3)
   ngOnInit() {
   }
@@ -48,11 +49,11 @@ export class IndexPage implements OnInit {
     this.correo1=this.correo1;
     if (this.correosplitted == this.correo1){
       console.log("Funciono IF del DUOCUC.CL");
-      this.navController.navigateRoot('/registralu')
+      this.routerLinks.navigate(['/registralu'])
     }
     else if(this.correosplitted == this.correo2){
       console.log("funciono IF del profesor");
-      this.navController.navigateRoot('/registrpro')
+      this.routerLinks.navigate(['/registrpro'])
     }
     else{
       console.log("TRAMPOSO NO EXISTE ESE ERROR");
