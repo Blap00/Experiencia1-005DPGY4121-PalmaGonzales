@@ -57,7 +57,7 @@
           </ion-select>
         </ion-item>
       </ion-item> -->
-      <ion-button [disabled] ="formulario.invalid" expand="full" routerLink="/inisesalu" color="primary" type="submit" >
+      <ion-button [disabled] ="formulario.invalid" expand="full" routerLink="/inisesalu" color="primary" type="submit" (click)="addDatos()" >
         Registrarme
       </ion-button>
     </form>
