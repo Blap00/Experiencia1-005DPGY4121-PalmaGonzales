@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core'; 
 import { UsuarioAluService, Datos } from 'src/app/services/usuario-alu.service';
 import { Platform, ToastController, IonList } from '@ionic/angular';
-
+import { JsonUsers } from '../../models/json-users';
+import { ApiAlmJsonService } from '../../services/api-alm-json.service';
+import { Router } from '@angular/router';
 
 // interface Carrera{
 //   name: string;
@@ -11,6 +13,14 @@ import { Platform, ToastController, IonList } from '@ionic/angular';
 //   sem: string;
 //   value: number;
 // }
+interface datousu{
+  id: number;
+  usuario: String,
+  contrasenna: String,    
+  carrera: String,
+  semestre: String,
+  modified: number
+}
 
 @Component({
   selector: 'app-registralu',
@@ -21,20 +31,27 @@ export class RegistraluPage implements OnInit {
   datos: Datos[]= [];
   newDato: Datos= <Datos>{};
   @ViewChild('myList')myList : IonList
-usuario={
-  user:'',
-  pass:'',    
-  carr:'',
-  seme:'',
+  data: JsonUsers
+  usuario:datousu
+  usuarionue={
+    id: 0,
+    usuario:'',
+    contrasenna:'',    
+    carrera:'',
+    semestre:'',
+    modified: 0,
 }
-  
   constructor(
+    private apiService:ApiAlmJsonService,
+    private router:Router,
     private storageService: UsuarioAluService,
     private plt: Platform, private toastController: ToastController 
     ) {
+      this.data = new JsonUsers();
       this.plt.ready().then(()=>{
         this.loadDatos();   
       })
+      
      }
   //get
   loadDatos(){
@@ -43,7 +60,13 @@ usuario={
     })
   }
   //Create
-  addDatos(){
+  submitForm(){
+    this.usuario=this.usuarionue;
+    this.data = this.usuario
+    this.apiService.createItem(this.data).subscribe((response) => {
+      console.log("submit")
+    });
+    this.newDato = this.usuario;
     this.newDato.modified= Date.now();
     this.newDato.id= Date.now();
     this.storageService.addDatos(this.newDato).then(dato=>{
@@ -51,10 +74,11 @@ usuario={
       this.showToast('¡Datos Agregados!');
       this.loadDatos();
     })
+    this.router.navigate(['inisesalu'])    
   }
   //update
   updateDatos(dato:Datos){
-    dato.usuario= 'UPDATED: ${dato.usuario}';
+    dato.usuario= `UPDATED: ${dato.usuario}`;
     dato.modified= Date.now();
     this.storageService.updateDatos(dato).then(item=>{
       this.showToast('Elemento Actualizado!')

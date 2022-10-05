@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit   } from '@angular/core';
 // import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { MenuController } from '@ionic/angular'; 
 import { AlertController } from '@ionic/angular';
+// import { CameraPreview  } from '@awesome-cordova-plugins/camera-preview/ngx';
+// import { CameraService } from '../../services/camera.service'; //terminar despues
 
 @Component({
   selector: 'app-escanearqr',
@@ -11,7 +13,8 @@ import { AlertController } from '@ionic/angular';
 export class EscanearqrPage implements OnInit {
 
   constructor(private menuController : MenuController,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    ) { }
 
   ngOnInit() {
   }

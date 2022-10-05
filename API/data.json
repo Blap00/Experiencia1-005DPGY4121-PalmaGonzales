@@ -1,0 +1,28 @@
+{
+  "json-users": [
+    {
+      "id": 1,
+      "usuario": "fa.palma",
+      "contrasenna": "contrasenna1",
+      "carrera": "Ingenieria Informatica",
+      "semestre": "primer semestre",
+      "modified": 0
+    },
+    {
+      "id": 2,
+      "usuario": "ASDAd",
+      "contrasenna": "ASGAD",
+      "carrera": "ASFADA",
+      "semestre": "",
+      "modified": 0
+    },
+    {
+      "id": 3,
+      "usuario": "usuario1",
+      "contrasenna": "pass1",
+      "carrera": "dsa",
+      "semestre": "asd",
+      "modified": 0
+    }
+  ]
+}

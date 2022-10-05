@@ -3,17 +3,16 @@ import { Storage } from '@ionic/storage';
 //Implementaremos un Sistema CRUD con LocalStorage en BBDD
 export interface Datos{
   id: number;
-  usuario: String;
-  contrasenna: String;
-  semestre: String;
-  carrera: String;
+  usuario: string;
+  contrasenna: string;
+  carrera: string;
   modified: number;
 }
 const ITEMS_KEY= 'my-dato';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioAluService {
+export class UsuarioProService {
   private _storage: Storage | null = null;
   
 
