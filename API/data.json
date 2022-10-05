@@ -23,6 +23,22 @@
       "carrera": "dsa",
       "semestre": "asd",
       "modified": 0
+    },
+    {
+      "id": 4,
+      "usuario": "asdasda",
+      "contrasenna": "sasdasdas",
+      "carrera": "asdasdasfasdf",
+      "semestre": "",
+      "modified": 0
+    },
+    {
+      "id": 5,
+      "usuario": "Blap",
+      "contrasenna": "1234",
+      "carrera": "321",
+      "semestre": "",
+      "modified": 0
     }
   ]
 }

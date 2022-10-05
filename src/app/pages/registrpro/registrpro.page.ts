@@ -70,7 +70,7 @@ loadDatos(){
     this.newDato.id= Date.now();
     this.storageService.addDatos(this.newDato).then(dato=>{
       this.newDato=<Datos>{};
-      this.showToast('¡Datos Agregados!');
+      this.showToast('¡Usuario Registrado!');
       this.loadDatos();
     })
     this.router.navigate(['inisesalu'])    
@@ -80,7 +80,7 @@ updateDatos(dato:Datos){
   dato.usuario= `UPDATED: ${dato.usuario}`;
   dato.modified= Date.now();
   this.storageService.updateDatos(dato).then(item=>{
-    this.showToast('Elemento Actualizado!')
+    this.showToast('Usuario Actualizado!')
     this.myList.closeSlidingItems();
     this.loadDatos();
   })
@@ -88,7 +88,7 @@ updateDatos(dato:Datos){
 //delete
 deleteDatos(dato:Datos){
   this.storageService.deleteDatos(dato.id).then(item=>{
-    this.showToast('Elemento Eliminado!');
+    this.showToast('Usuario Eliminado!');
     this.myList.closeSlidingItems();
     this.loadDatos();
   })
