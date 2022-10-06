@@ -6,7 +6,9 @@ $ ionic serve --lab
 $ json-server --watch API/data.json
 
 Utilizamos REST API en formato Json para tener facilidad de acceso a Datos, tanto para el usuario como para el administrador
+
     Tareas encargadas de equipo(Necesario actualizar)
+    
 -_____________________________________________________-
    
         --Facilita acceso con formularios
