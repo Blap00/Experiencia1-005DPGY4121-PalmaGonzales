@@ -5,14 +5,14 @@ import { JsonUsers } from '../../models/json-users';
 import { ApiAlmJsonService } from '../../services/api-alm-json.service';
 import { Router } from '@angular/router';
 
-// interface Carrera{
-//   name: string;
-//   value: number;
-// }
-// interface Semestre{
-//   sem: string;
-//   value: number;
-// }
+interface Carrera{
+  name: string;
+  value: number;
+}
+interface Semestre{
+  sem: string;
+  value: number;
+}
 interface datousu{
   id: number;
   usuario: String,
@@ -101,44 +101,44 @@ export class RegistraluPage implements OnInit {
     });
     toast.present();
   }
-  // carrera: Carrera[]=[
-  //   {
-  //     name: 'Ingenieria Informatica',
-  //     value: 1,
-  //   },
-  //   {
-  //     name: 'Analista Programador',
-  //     value: 2,
-  //   },
-  //   {
-  //     name: 'Ingenieria Mecanica',
-  //     value: 3,
-  //   },
-  //   {
-  //     name: 'Auditor contador',
-  //     value: 4,
-  //   },
+  carrera: Carrera[]=[
+    {
+      name: 'Ingenieria Informatica',
+      value: 1,
+    },
+    {
+      name: 'Analista Programador',
+      value: 2,
+    },
+    {
+      name: 'Ingenieria Mecanica',
+      value: 3,
+    },
+    {
+      name: 'Auditor contador',
+      value: 4,
+    },
     
-  // ];
-  // semestre: Semestre[]=[
-  //   {
-  //     sem: 'Primer semestre',
-  //     value: 1,
-  //   },
-  //   {
-  //     sem: 'Segundo Semestre',
-  //     value: 2,
-  //   },
-  //   {
-  //     sem: 'Tercer semestre',
-  //     value: 3,
-  //   },
-  //   {
-  //     sem: 'Cuarto Semestre',
-  //     value: 4,
-  //   },
+  ];
+  semestre: Semestre[]=[
+    {
+      sem: 'Primer semestre',
+      value: 1,
+    },
+    {
+      sem: 'Segundo Semestre',
+      value: 2,
+    },
+    {
+      sem: 'Tercer semestre',
+      value: 3,
+    },
+    {
+      sem: 'Cuarto Semestre',
+      value: 4,
+    },
     
-  // ];
+  ];
   ngOnInit() {
   }
   onSubmit(){
