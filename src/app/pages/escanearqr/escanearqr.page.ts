@@ -18,7 +18,6 @@ export class EscanearqrPage implements OnInit {
 
   ngOnInit() {
   }
-
   // tomarFoto(){
   //   const options: CameraOptions = {
   //     quality: 100,

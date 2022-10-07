@@ -125,11 +125,6 @@ export class InisesaluPage implements OnInit {
             break;
           }
         }
-        else{
-          console.log("Error desconocido")
-          this.alerta3();
-          break;
-        }
       }
     })
   }
