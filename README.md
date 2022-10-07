@@ -1,19 +1,23 @@
+ionic start proy Blank --type=angular
+import src and API to PROYECT
+COMANDOS EN COMAND PROMT
+--localstorage
+$ npm install --save @ionic/storage-angular
+$ npm install --save @ionic/storage
+--Camera
+$ npm install cordova-plugin-camera
+$ npm install @awesome-cordova-plugins/camera
+--Camera preview
+$ npm install cordova-plugin-camera-preview
+$ npm install @awesome-cordova-plugins/camera-preview
+--ionic cap sync
+$ ionic cap sync
+--instalar JSON-server
+$ npm install -g json-server
 
-PARA Iniciar servidor y api utilizar siguientes comandos dentro de command promt:
 
-$ ionic serve --lab 
+para iniciar servidor Restapi utilizar siguientes comandos en COMMAND PROMPT
+
+$ ionic serve --lab
 
 $ json-server --watch API/data.json
-
-Utilizamos REST API en formato Json para tener facilidad de acceso a Datos, tanto para el usuario como para el administrador
-
-    Tareas encargadas de equipo(Necesario actualizar)
-    
--_____________________________________________________-
-   
-        --Facilita acceso con formularios
-    --Habilitar inputs especiales con sus debidas 
-            ordenes sobre la informacion
-    -*-*Mejorar FRONT-END en la aplicación*-*-
-
-_-----------------------------------------------------_
