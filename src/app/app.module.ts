@@ -4,8 +4,8 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule} from '@angular/common/http';
-import{ Camera } from '@awesome-cordova-plugins/camera/ngx';
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@awesome-cordova-plugins/camera-preview/ngx';
+// import{ Camera } from '@awesome-cordova-plugins/camera/ngx';
+// import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@awesome-cordova-plugins/camera-preview/ngx';
 import { FormsModule } from '@angular/forms';
 
 
@@ -28,8 +28,8 @@ import { Drivers } from '@ionic/storage';
 
   ],
   providers: [
-    CameraPreview,
-    Camera,
+    // CameraPreview,
+    // Camera,
     { 
       provide: RouteReuseStrategy, useClass: IonicRouteStrategy 
     },
