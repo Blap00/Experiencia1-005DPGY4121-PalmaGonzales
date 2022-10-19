@@ -2,7 +2,7 @@ img{
     max-width: 35%;
 }
 .azulito{
-    background-color: #B0E9FC;
+    background-color: #f7d547;
 }
 .sep1{
     padding: 0.3vw;
@@ -12,15 +12,15 @@ img{
     height:10px;
 }
 .celestito{
-    background: #D9F6FF;
+    background: #9ac1d9;
     
 }
 .bodycol{
-    background-color: #CCDADF;
+    background-color: #012840;
 }
 .porque{
     position: relative;
-    left:7%;
+    left:27.4%;
 }
 .porque2{
     position: relative;
@@ -34,7 +34,7 @@ img{
     background-color: #B0E9FC;
 }
 .ema{
-    background-color: #B0E9FC;
+    background-color:#CCDADF;
 }
 .rectange5{
     position: absolute;
@@ -43,55 +43,4 @@ img{
     left: 9px;
     top: 193px;
 }
-@keyframes error {
-    5% {
-      padding-left: calc(var(--padding-button) - 8px);
-      padding-right: calc(var(--padding-button) + 8px);
-    }
-    10% {
-      padding-left: calc(var(--padding-button) + 7px);
-      padding-right: calc(var(--padding-button) - 7px);
-    }
-    20% {
-      padding-left: calc(var(--padding-button) - 6px);
-      padding-right: calc(var(--padding-button) + 6px);
-    }
-    30% {
-      padding-left: calc(var(--padding-button) + 5px);
-      padding-right: calc(var(--padding-button) - 5px);
-    }
-    40% {
-      padding-left: calc(var(--padding-button) - 4px);
-      padding-right: calc(var(--padding-button) + 4px);
-    }
-    50% {
-      padding-left: calc(var(--padding-button) + 3px);
-      padding-right: calc(var(--padding-button) - 3px);
-    }
-    60% {
-      padding-left: calc(var(--padding-button) - 2px);
-      padding-right: calc(var(--padding-button) + 2px);
-    }
-    70% {
-      padding-left: calc(var(--padding-button) + 1px);
-      padding-right: calc(var(--padding-button) - 1px);
-    }
-    80% {
-      padding-left: var(--padding-button);
-      padding-right: var(--padding-button);
-    }
-}
-.but1-anim:hover {
-    background-color: var(--color-secondary);
-}
-.but1-anim {
-    background-color: var(--color-primary);
-    border: none;
-    color: var(--color-white);
-    cursor: pointer;
-    margin-left: 12px;
-    padding: 3px var(--padding-button);
-    transition: background-color .1s ease;
-}
-
   

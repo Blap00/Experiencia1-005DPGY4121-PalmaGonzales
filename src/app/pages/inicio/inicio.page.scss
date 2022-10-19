@@ -7,11 +7,20 @@
     border-radius: 90%;
 }
 .azulito{
-    background-color: #B0E9FC;
+    background-color: #f7d547;
 }
 .bodycol{
-    background-color: #CCDADF;
+    background-color: #012840;
 }
 .grupbot{
     position: sticky;
+}
+.titulo{
+    margin-right: 25px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+ion-title{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
 }

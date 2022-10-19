@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController , NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 interface Componente{
   icon: string;
   name: string;
@@ -18,9 +20,16 @@ interface ComponenteAlumno{
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  private _storage: Storage
   constructor(private alertController: AlertController,
-    private navCtrl: NavController) {}
-
+    private routerLink: Router,
+    private storage: Storage, ) {
+      
+    }
+    async ngOnInit() {
+      const storage= await  this.storage.create();
+      this._storage=storage;
+    }
     handlerMessage = '';
     roleMessage = '';
     async alerta() {
@@ -40,7 +49,7 @@ export class AppComponent {
             role: 'confirm',
             handler: () => {
               this.handlerMessage = 'Confirmo el cerrar la sesión, necesitara Abrir la cuenta nuevamente';
-              this.navCtrl.navigateRoot('/inicio')
+              this.routerLink.navigate(['/inicio'])
             },
           },
         ] 
