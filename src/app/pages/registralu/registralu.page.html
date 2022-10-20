@@ -23,24 +23,24 @@
 <ion-content>
   <ion-toolbar style="width: 100%;height: 97.6%;padding-top: 5vw;" color=" bodycol">
     <!-- Aqui va el material de la pagina -->
-    <form  #formulario="ngForm" 
+    <form #formulario="ngForm" [formGroup]="formularioRegistro" (keyup.enter)="CrearUsuario()"
     (ngSubmit)="onSubmit()"
     >
       <ion-item style=" border-top-left-radius: 70%;border-top-right-radius: 70%; opacity: 75%; text-align: center;">
         <ion-label position="floating" color="primary" >Usuario: <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input color="blanquito" type="text" required placeholder="Digite Usuario: " name="user" [(ngModel)]= "usuarionue.usuario"></ion-input>
+        <ion-input color="blanquito" type="text" required placeholder="Digite Usuario: " name="user" formControlName="usuario" [(ngModel)]= "datosusu.usuario"></ion-input>
       </ion-item>
       <ion-item style=" opacity: 75%; text-align: center;">
         <ion-label  position="floating" color="primary" >Contraseña: <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input color="blanquito" type="texto" required placeholder="Digite Contraseña: " name="pass" [(ngModel)]= "usuarionue.contrasenna"></ion-input>
+        <ion-input color="blanquito" type="texto" required placeholder="Digite Contraseña: " name="pass" formControlName="contrasenna" [(ngModel)]= "datosusu.contrasenna"></ion-input>
       </ion-item>
       <ion-item style=" opacity: 75%; text-align: center;">
         <ion-label  position="floating" color="primary" >Carrera: <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input color="blanquito" type="texto" required placeholder="Digite su carrera: " name="carr" [(ngModel)]= "usuarionue.carrera"></ion-input>
+        <ion-input color="blanquito" type="texto" required placeholder="Digite su carrera: " name="carr" formControlName="carrera" [(ngModel)]= "datosusu.carrera"></ion-input>
       </ion-item>
       <ion-item style=" opacity: 75%; text-align: center;">
         <ion-label  position="floating" color="primary" >Semestre: <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input color="blanquito" type="texto" required placeholder="Digite su semestre: " name="seme" [(ngModel)]= "usuarionue.semestre"></ion-input>
+        <ion-input color="blanquito" type="texto" required placeholder="Digite su semestre: " name="seme" formControlName="semestre" [(ngModel)]= "datosusu.semestre"></ion-input>
       </ion-item>
       <ion-button [disabled] ="formulario.invalid" expand="full" 
        color="primary" type="submit" (click)="submitForm()" >

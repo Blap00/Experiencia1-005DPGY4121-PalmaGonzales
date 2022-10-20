@@ -4,6 +4,13 @@ import { Platform, ToastController, IonList } from '@ionic/angular';
 import { JsonUsers } from '../../models/json-users';
 import { ApiAlmJsonService } from '../../services/api-alm-json.service';
 import { Router } from '@angular/router';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder, 
+} from '@angular/forms';
+import {AlertController} from '@ionic/angular';
 
 // interface Carrera{
 //   name: string;
@@ -29,6 +36,10 @@ interface datousu{
 })
 export class RegistraluPage implements OnInit {
   datos: Datos[]= [];
+
+  formularioRegistro:FormGroup;
+  newUsuario: Datos = <Datos>{};
+
   newDato: Datos= <Datos>{};
   @ViewChild('myList')myList : IonList
   data: JsonUsers
@@ -45,22 +56,66 @@ export class RegistraluPage implements OnInit {
     private apiService:ApiAlmJsonService,
     private router:Router,
     private storageService: UsuarioAluService,
-    private plt: Platform, private toastController: ToastController 
-    ) {
+    private plt: Platform, private toastController: ToastController,
+    private alertController : AlertController,
+    private fb: FormBuilder) {
+      this.formularioRegistro = this.fb.group({
+        'id': new FormControl(""),
+        'usuario': new FormControl("", Validators.required),
+        'contrasenna': new FormControl("", Validators.required),
+        'carrera': new FormControl("",Validators.required),
+        'semestre': new FormControl("",Validators.required),
+        'modified': new FormControl(""),
+
+
+      })
       this.data = new JsonUsers();
       this.plt.ready().then(()=>{
         this.loadDatos();   
       })
       
      }
+
+     async CrearUsuario(){
+      var form=this.formularioRegistro.value;
+      if(this.formularioRegistro.invalid){
+        const alert = await this.alertController.create({
+          header:'datos incompletos',
+          message:'ebe completas todos los campos',
+          buttons:['Aceptar'],
+        });
+        await alert.present();
+        return;
+      }
+      this.newUsuario.usuario = form.usuario,
+      this.newUsuario.id = form.id,
+      this.newUsuario.contrasenna = form.pass,
+      this.newUsuario.modified = form.modified,
+      this.newUsuario.carrera = form.carrera,
+      this.newUsuario.semestre = form.semestre,
+      this.storageService.addDatos(this.newUsuario).then(dato =>{
+        this.newUsuario = <Datos>{};
+        this.showToast('Datos Agregados!');
+      })
+     }
+
+
   //get
   loadDatos(){
     this.storageService.getDatos().then(dato=>{
         this.datos=dato;
     })
   }
+
+
+
+
+
+
+
   //Create
   submitForm(){
+    var usuarioencontrado= 
     this.usuario=this.usuarionue;
     this.data = this.usuario
     this.apiService.createItem(this.data).subscribe((response) => {
