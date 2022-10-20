@@ -1,0 +1,51 @@
+<ion-header>
+  <div class="sep1">
+    <ion-toolbar color=" azulito">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title ><p style="position: relative;left: -1%;font-size: 110%;color: #2D4596;">Registrapp</p><p><img src="assets/aaa1.jpg" alt="Logo" style="width:15%; position: absolute; top: 5%; right: 5%;"></p></ion-title>
+    </ion-toolbar>
+  </div>
+  <div class="sep1">
+  <ion-toolbar color=" azulito" style="width: 100%;height: 45px;left: 0px;top: 0px;padding-top: 0;">
+    <ion-card-subtitle ><p style="text-align: center; top: -4px;" ><a href="https://www.duoc.cl/"><img src="assets/pngegg.png" alt="DUOCUC" style="width: 60%; height: 60%; padding-top: -10%;" class="ion-image1" ></a></p></ion-card-subtitle>
+  </ion-toolbar>
+  </div>
+  <div class="sep1">
+  <ion-toolbar style="width: 100%;
+  height: 34px;
+  left: 0px;
+  top: 0px;
+  padding-top: 0;" color=" celestito">
+    <ion-card-subtitle style=" top: -4px; padding-top: 0px;"><p style="text-align: start; color: black;">Registrarme</p></ion-card-subtitle>
+  </ion-toolbar>
+  </div>
+</ion-header>
+<ion-content scroll="false">
+  <!-- body -->
+  <ion-toolbar style="width: 100%; height: 97.6%; padding-top: 5vw;" color=" bodycol">
+    <!-- Creamos form solamente para ingresar correo -->
+    <form #formulario="ngForm" >
+      <div class="ema">
+        <ion-item  style="opacity: 75%; text-align: center;">
+          <ion-label position="floating" >E-Mail <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="email" placeholder="Introduzca su mail Institucional" name="email" [(ngModel)]="pusuario.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z\.]{6,20})([.])([a-zA-Z]{2,5})$"></ion-input>
+        </ion-item>
+      </div>
+      <ion-button (click)="onSubmit1();" (onSubmit)="onSubmit1();" [disabled] ="formulario.invalid"  class="porque" color="tertiary" fill="outline" size="small" shape="round" >
+        Registrarme
+      </ion-button>
+    </form>
+    <ion-row>   
+      <ion-col>     
+        <ion-button routerLink="/nec-ayu" class="porque1" color="tertiary" fill="clear" size="default" shape="round" type="submit" >
+          ¿Necesitas ayuda?
+        </ion-button>
+      </ion-col> 
+    </ion-row>
+  </ion-toolbar>
+  <ion-toolbar style="width: 100%; height: 10px;" color=" celestito">
+  </ion-toolbar>
+  
+</ion-content>

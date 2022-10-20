@@ -1,0 +1,54 @@
+<ion-header>
+  <div class="sep1">
+    <ion-toolbar color=" azulito">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title ><p style="position: relative;left: -2%;font-size: 110%;color: #2D4596;">Registrapp</p><p><img src="assets/aaa1.jpg" alt="Logo" style="width:15%; position: absolute; top: 5%; right: 5%;"></p></ion-title>
+    </ion-toolbar>
+    </div>
+    <div class="sep1">
+    <ion-toolbar color=" azulito" style="width: 100%;height: 45px;left: 0px;top: 0px;padding-top: 0;">
+      <ion-card-subtitle ><p style="text-align: center; top: -4px;" ><a href="https://www.duoc.cl/"><img src="assets/pngegg.png" alt="DUOCUC" style="width: 60%; height: 60%; padding-top: -10%;" class="ion-image1" ></a></p></ion-card-subtitle>
+    </ion-toolbar>
+    </div>
+    <div class="sep1">
+    <ion-toolbar style="width: 100%;height: 34px;left: 0px;top: 0px;padding-top: 0;" color=" celestito">
+      <ion-card-subtitle style=" top: -4px; padding-top: 0px;"><p style="text-align: start; color: black;">Registrarse como Alumno</p></ion-card-subtitle>
+    </ion-toolbar>
+    </div>
+  
+</ion-header>
+
+<ion-content>
+  <ion-toolbar style="width: 100%;height: 97.6%;padding-top: 5vw;" color=" bodycol">
+    <!-- Aqui va el material de la pagina -->
+    <form #formulario="ngForm" [formGroup]="formularioRegistro" (keyup.enter)="CrearUsuario()"
+    (ngSubmit)="onSubmit()"
+    >
+      <ion-item style=" border-top-left-radius: 70%;border-top-right-radius: 70%; opacity: 75%; text-align: center;">
+        <ion-label position="floating" color="primary" >Usuario: <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input color="blanquito" type="text" required placeholder="Digite Usuario: " name="user" formControlName="usuario" [(ngModel)]= "datosusu.usuario"></ion-input>
+      </ion-item>
+      <ion-item style=" opacity: 75%; text-align: center;">
+        <ion-label  position="floating" color="primary" >Contraseña: <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input color="blanquito" type="texto" required placeholder="Digite Contraseña: " name="pass" formControlName="contrasenna" [(ngModel)]= "datosusu.contrasenna"></ion-input>
+      </ion-item>
+      <ion-item style=" opacity: 75%; text-align: center;">
+        <ion-label  position="floating" color="primary" >Carrera: <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input color="blanquito" type="texto" required placeholder="Digite su carrera: " name="carr" formControlName="carrera" [(ngModel)]= "datosusu.carrera"></ion-input>
+      </ion-item>
+      <ion-item style=" opacity: 75%; text-align: center;">
+        <ion-label  position="floating" color="primary" >Semestre: <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input color="blanquito" type="texto" required placeholder="Digite su semestre: " name="seme" formControlName="semestre" [(ngModel)]= "datosusu.semestre"></ion-input>
+      </ion-item>
+      <ion-button [disabled] ="formulario.invalid" expand="full" 
+       color="primary" type="submit" (click)="submitForm()" >
+        Registrarme
+      </ion-button>
+    </form>
+  </ion-toolbar>
+  <ion-toolbar style="width: 100%; height: 10px;" color=" celestito">
+  </ion-toolbar>
+  
+</ion-content>
