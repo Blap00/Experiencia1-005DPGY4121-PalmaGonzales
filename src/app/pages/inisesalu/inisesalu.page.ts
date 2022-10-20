@@ -105,6 +105,7 @@ export class InisesaluPage implements OnInit {
         if((this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass) && (this.usuarios[index].semestre)){
           console.log("Alumno ingresado");
           this.router.navigate(['/alumno']);
+
           break;
         }      
         else if((this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass) && (this.usuarios[index].semestre=="")){

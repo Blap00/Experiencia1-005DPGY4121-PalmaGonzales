@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController , NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { MenuController} from '@ionic/angular';
 interface Componente{
   icon: string;
   name: string;
@@ -23,7 +24,8 @@ export class AppComponent {
   private _storage: Storage
   constructor(private alertController: AlertController,
     private routerLink: Router,
-    private storage: Storage, ) {
+    private storage: Storage,
+    private menuController: MenuController ) {
       
     }
     async ngOnInit() {
@@ -56,6 +58,7 @@ export class AppComponent {
       }); 
       await alert.present();
     }
+    
   componentes: Componente[]=[ 
     {
       icon: 'home-outline',
