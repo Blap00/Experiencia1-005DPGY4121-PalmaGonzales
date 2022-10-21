@@ -13,43 +13,43 @@ const routes: Routes = [
   {
     path: 'index',
     loadChildren: () => import('./pages/index/index.module').then( m => m.IndexPageModule),
-    canActivate:[SesnopGuard]
+    // canActivate:[SesnopGuard]
   },
   {
     path: 'nec-ayu',
     loadChildren: () => import('./pages/nec-ayu/nec-ayu.module').then( m => m.NecAyuPageModule),
-    canActivate:[SesnopGuard]
+    // canActivate:[SesnopGuard]
   },
   {
     path: 'err',
     loadChildren: () => import('./pages/err/err.module').then( m => m.ERRPageModule),
-    canActivate:[SesnopGuard]
+    // canActivate:[SesnopGuard]
   },
   {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule),
-    canActivate:[SesnopGuard]
+    // canActivate:[SesnopGuard]
   },
   {
     path: 'inisesalu',
     loadChildren: () => import('./pages/inisesalu/inisesalu.module').then( m => m.InisesaluPageModule),
-    canActivate:[SesnopGuard],
+    // canActivate:[SesnopGuard],
     
   },
   {
     path: 'inisespro',
     loadChildren: () => import('./pages/inisespro/inisespro.module').then( m => m.InisesproPageModule),
-    canActivate:[SesnopGuard]
+    // canActivate:[SesnopGuard]
   },
   {
     path: 'registralu',
     loadChildren: () => import('./pages/registralu/registralu.module').then( m => m.RegistraluPageModule),
-    canActivate:[SesnopGuard]
+    // canActivate:[SesnopGuard]
   },
   {
     path: 'registrpro',
     loadChildren: () => import('./pages/registrpro/registrpro.module').then( m => m.RegistrproPageModule),
-    canActivate:[SesnopGuard]
+    // canActivate:[SesnopGuard]
   },
   {
     path: 'alumno',

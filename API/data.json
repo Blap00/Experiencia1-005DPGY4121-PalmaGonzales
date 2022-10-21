@@ -7,6 +7,14 @@
       "carrera": "Ingenieria Informatica",
       "semestre": "primer semestre",
       "modified": 0
-    }    
+    },
+    {
+      "id": 2,
+      "usuario": "Blap",
+      "contrasenna": "usuario1",
+      "carrera": "Ingenieria informatica",
+      "semestre": "primer semestre",
+      "modified": null
+    }
   ]
 }
