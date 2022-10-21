@@ -135,7 +135,7 @@ loadDatos(){
                       this.showToast('¡Datos Agregados!');
                       this.loadDatos();
                     })
-                    this.router.navigate(['inisesalu'])    
+                    this.router.navigate(['inisespro'])    
                     console.log("No existe el usuario, se permite registrar")
                     break;
                 }

@@ -15,6 +15,22 @@
       "carrera": "Ingenieria informatica",
       "semestre": "primer semestre",
       "modified": null
+    },
+    {
+      "id": 3,
+      "usuario": "Blapwas",
+      "contrasenna": "washere",
+      "carrera": "Ingenieria informatica",
+      "semestre": "primer semestre",
+      "modified": null
+    },
+    {
+      "id": 4,
+      "usuario": "angelo",
+      "contrasenna": "angelo123",
+      "carrera": "ingenieria comercial",
+      "semestre": null,
+      "modified": null
     }
   ]
 }
