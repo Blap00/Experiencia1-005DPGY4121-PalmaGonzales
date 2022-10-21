@@ -99,19 +99,18 @@ export class InisesproPage implements OnInit {
   }
 
   buscarUser(){
-    console.log("fuera ")
     this.usuarioservice.getUsers()
     .subscribe(resp =>{
       for (let index = 0; index<=this.usuarios.length; index++) {
-        // console.log("dentro", resp)
-        // console.log(this.usuarios[index].semestre.length)
-        if((this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass) && (this.usuarios[index].semestre.length<=1)){
+        if((this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass) && (this.usuarios[index].semestre==null)){
           console.log("Docente ingresado");
+          localStorage.setItem('ingresapro', 'true')
+          localStorage.setItem('sesnop', 'false')
           this.router.navigate(['/inicio-inicio']);
           break;
         }      
         else if((this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass)){
-          if((this.usuarios[index].semestre.length>=2)){
+          if((this.usuarios[index].semestre!=null)){
           console.log("El usuario no pertenece al rol de docente");
           this.alerta2();
           break;
@@ -124,7 +123,7 @@ export class InisesproPage implements OnInit {
         }
         if((this.usuarios[index].usuario)!=(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass) || (this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)!=(this.usuario.pass)) {
           console.log(this.usuarios[index].semestre.length)
-          if(this.usuarios[index].semestre==""){
+          if(this.usuarios[index].semestre==null){
             console.log("datos erroneos")
             this.alerta1();
             break;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiAlmJson } from '../../interface/interfaceAlu';
-import { UsuariosService } from 'src/app/services/usuarios.service';
+import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 interface Carrera{
@@ -104,6 +104,9 @@ export class InisesaluPage implements OnInit {
       for (let index = 0; index<=this.usuarios.length; index++) {
         if((this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass) && (this.usuarios[index].semestre)){
           console.log("Alumno ingresado");
+          localStorage.setItem('ingresaalu', 'true');
+          localStorage.setItem('sesnop', 'false')
+          // console.log(localStorage.getItem('iniciado'))
           this.router.navigate(['/alumno']);
           break;
         }      

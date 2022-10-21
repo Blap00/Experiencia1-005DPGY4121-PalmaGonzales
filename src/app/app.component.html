@@ -17,7 +17,7 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle *ngFor="let d of componentes1">  
-          <ion-item (click)="alerta()" detail=true>
+          <ion-item (click)="alertapro()" detail=true>
             <ion-button  expand="full" size="default" fill="outline" shape="round">
               <ion-icon  slot="start" [name]="d.icon" color="primary"></ion-icon>
               {{ d.name }}
@@ -47,7 +47,7 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle *ngFor="let d of alumnocomponentes1">  
-          <ion-item (click)="alerta()" detail=true>
+          <ion-item (click)="alertaalu()" detail=true>
             <ion-button  expand="full" size="default" fill="outline" shape="round">
               <ion-icon  slot="start" [name]="d.icon" color="primary"></ion-icon>
               {{ d.name }}

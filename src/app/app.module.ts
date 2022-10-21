@@ -13,10 +13,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {IonicStorageModule} from '@ionic/storage-angular'
 import { Drivers } from '@ionic/storage';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 

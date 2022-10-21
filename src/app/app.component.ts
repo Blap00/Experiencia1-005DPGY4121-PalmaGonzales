@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController , NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { MenuController} from '@ionic/angular';
 interface Componente{
   icon: string;
   name: string;
@@ -23,8 +24,14 @@ export class AppComponent {
   private _storage: Storage
   constructor(private alertController: AlertController,
     private routerLink: Router,
-    private storage: Storage, ) {
+    private storage: Storage,
+    private menuController: MenuController ) {
       
+    }
+    cerrarSesionAlu(){
+      console.log(localStorage.removeItem('ingresaalu'))
+      localStorage.setItem('sesnop','true')
+      this.menuController.enable(false, 'second')
     }
     async ngOnInit() {
       const storage= await  this.storage.create();
@@ -32,7 +39,8 @@ export class AppComponent {
     }
     handlerMessage = '';
     roleMessage = '';
-    async alerta() {
+    
+    async alertaalu() {
       const alert = await this.alertController.create({
         header: '¿Estas Seguro?',
         message: 'Al cerrar la sesión volvera al inicio de registro.',
@@ -49,6 +57,37 @@ export class AppComponent {
             role: 'confirm',
             handler: () => {
               this.handlerMessage = 'Confirmo el cerrar la sesión, necesitara Abrir la cuenta nuevamente';
+              this.cerrarSesionAlu();
+              this.routerLink.navigate(['/inicio'])
+            },
+          },
+        ] 
+      }); 
+      await alert.present();
+    }
+    cerrarSesionPro(){
+      console.log(localStorage.removeItem('ingresapro'));
+      localStorage.setItem('sesnop','true');
+      this.menuController.enable(false, 'first')
+    }
+    async alertapro() {
+      const alert = await this.alertController.create({
+        header: '¿Estas Seguro?',
+        message: 'Al cerrar la sesión volvera al inicio de registro.',
+        buttons: [
+          {
+            text: 'cancelar',
+            role: 'cancel',
+            handler: () => {
+              this.handlerMessage = 'Cancelo el salir de la sesión';
+            },
+          },
+          {
+            text: 'Ok',
+            role: 'confirm',
+            handler: () => {
+              this.handlerMessage = 'Confirmo el cerrar la sesión, necesitara Abrir la cuenta nuevamente';
+              this.cerrarSesionPro();
               this.routerLink.navigate(['/inicio'])
             },
           },

@@ -1,5 +1,5 @@
 ion-toolbar{
-    background-color: var(--ion-color-mycolor);
+    background-color: #f7d547;
 }
 ion-content{
     background-color: var(--ion-color-mycolor-shade);
@@ -25,7 +25,7 @@ ion-content{
 }
 ion-content{
 
-    --ion-background-color:#CCDADF;
+    --ion-background-color:#012840;
 }
 ion-title{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -67,10 +67,10 @@ ion-title{
 }
 @media screen and (max-width: 600px) {
     table tr:nth-child(odd) td{
-        background-color: #B0E9FC ;
+        background-color: #51768c ;
     }
     table tr:nth-child(even) td{
-        background-color: #CCDADF ;
+        background-color: #91c1d9 ;
     }
     table,td {
         width:100%;

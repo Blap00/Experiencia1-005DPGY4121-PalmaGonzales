@@ -1,5 +1,5 @@
 ion-toolbar{
-    background-color: var(--ion-color-mycolor);
+    background-color: #f7d547;
 }
 ion-content{
     background-color: var(--ion-color-mycolor-shade);
@@ -21,7 +21,7 @@ ion-content{
 }
 ion-content{
 
-    --ion-background-color:#CCDADF;
+    --ion-background-color:#012840;
 }
 ion-title{
     color: black;
@@ -37,11 +37,14 @@ ion-item{
     --color: var(--ion-color-mycolor);
 }
 .horarios{
-    --ion-item-background: #CCDADF;
+    --ion-item-background: #9ac1d9;
 }
 .ion-text-wrap{
     color: black;
 }
 ion-list{
     border: #CCDADF;
+}
+ion-icon{
+    color: black;
 }
