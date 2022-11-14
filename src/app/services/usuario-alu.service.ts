@@ -5,6 +5,7 @@ export interface Datos{
   id: number;
   usuario: String;
   contrasenna: String;
+  recontrasenna:String;
   semestre: String;
   carrera: String;
   modified: number;

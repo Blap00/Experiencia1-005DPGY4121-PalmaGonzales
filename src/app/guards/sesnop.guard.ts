@@ -13,21 +13,17 @@ export class SesnopGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(localStorage.getItem('sesnop')){
+        this.router.navigate(['/inicio'])
         return true;
       }
-      // else if(localStorage.getItem('ingresalu')){
-      //   this.router.navigate(['/alumno'])
-      //   return false;
-      // }
-      // else if(localStorage.getItem('ingresapro')){
-      //   this.router.navigate(['/inicio-inicio'])
-      //   return false;
-      // }
-      else{
-        this.router.navigate(['/inicio'])
+      else if(localStorage.getItem('ingresalu')){
+        this.router.navigate(['/alumno'])
         return false;
       }
-    return true;
+      else if(localStorage.getItem('ingresapro')){
+        this.router.navigate(['/inicio-inicio'])
+        return false;
+      }
   }
   
 }

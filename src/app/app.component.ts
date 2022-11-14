@@ -112,6 +112,11 @@ export class AppComponent {
       name: 'Horario de Clases', 
       redirecTo: '/hde-clases'
     },
+    {
+      icon: 'calendar-number-outline',
+      name: 'Fechas con Feriados',
+      redirecTo: '/feriado-pro'
+    },
     
   ];
   componentes1: Componente[]=[
@@ -136,6 +141,11 @@ export class AppComponent {
       icon: 'home-outline',
       name:  'Escanear QR',
       redirecTo: '/escanearqr' 
+    },
+    {
+      icon: 'calendar-number-outline',
+      name: 'Fechas con Feriados',
+      redirecTo: '/feriado-alu'
     },
   ];
   alumnocomponentes1: ComponenteAlumno[]=[

@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core'; 
 import { UsuarioAluService, Datos } from 'src/app/services/usuario-alu.service';
 import { Platform, ToastController, IonList } from '@ionic/angular';
-import { JsonUsers } from '../../models/json-users';
-import { ApiAlmJsonService } from '../../services/api-alm-json.service';
-import { ApiAlmJson } from 'src/app/interface/interfaceAlu';
+// import { JsonUsers } from '../../models/json-users';
+// import { ApiAlmJsonService } from '../../services/api-alm-json.service';
+// import { ApiAlmJson } from 'src/app/interface/interfaceAlu';
 import { Router } from '@angular/router';
 import {
   FormGroup,
@@ -12,7 +12,8 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import {AlertController} from '@ionic/angular';
-import { UsuariosService } from 'src/app/services/usuarios.service';
+
+
 interface Carrera{
   name: string;
   value: number;
@@ -24,7 +25,8 @@ interface Semestre{
 interface datousu{
   id: number;
   usuario: String,
-  contrasenna: String,    
+  contrasenna: String,
+  recontrasenna: String,    
   carrera: String,
   semestre: String,
   modified: number
@@ -38,22 +40,23 @@ export class RegistrproPage implements OnInit {
   datos: Datos[]= [];
   formularioRegistro:FormGroup;
   newUsuario: Datos = <Datos>{};
-  usuarios:ApiAlmJson[]=[];
+  // usuarios:ApiAlmJson[]=[];
   newDato: Datos= <Datos>{};
   @ViewChild('myList')myList : IonList
-  data: JsonUsers
-  usuario:datousu
+  data: Datos= <Datos>{};
+  // usuario:datousu
   usuarionue={
     id: 0,
     usuario:'',
-    contrasenna:'',    
+    contrasenna:'', 
+    recontrasenna:'',   
     carrera:'',
     semestre:'',
     modified: 0,
 }
   constructor(
-    private usuarioservice:UsuariosService,
-    private apiService:ApiAlmJsonService,
+    private usuarioservice:UsuarioAluService,
+    // private apiService:ApiAlmJsonService,
     private router:Router,
     private storageService: UsuarioAluService,
     private plt: Platform, private toastController: ToastController,
@@ -61,11 +64,11 @@ export class RegistrproPage implements OnInit {
     private fb: FormBuilder  
     
     ) {
-      this.data = new JsonUsers();
       this.formularioRegistro = this.fb.group({
         'id': this.data.id,
         'usuario': new FormControl("", Validators.required),
         'contrasenna': new FormControl("", Validators.required),
+        'recontrasenna': new FormControl("", Validators.required),
         'carrera': new FormControl("",Validators.required),
         'semestre': this.data.semestre,
         'modified': this.data.modified,
@@ -84,76 +87,124 @@ loadDatos(){
 }
   //Create
   submitForm(){
-    let a =0;
-    let b =0;
-    let c=0;
-    
-    var form=this.formularioRegistro.value;
-    var carreraTOUP="";
-    this.newUsuario.usuario = form.usuario,
-    this.newUsuario.id = form.id,
-    this.newUsuario.contrasenna = form.pass,
-    this.newUsuario.modified = form.modified,
-    this.newUsuario.carrera = form.carrera,
-    this.newUsuario.semestre = form.semestre,
-    this.usuarioservice.getUsers().subscribe(resp =>{
-      for (let index = 0; index<=this.usuarios.length; index++) {
-        // console.log(form.usuario)
-        // console.log(this.usuarios[index].usuario)
-        if((this.usuarios[index].usuario)==(form.usuario)){
-          console.log("Usuario existente");
-          a=1;
-          if(a==1){
-            break;
+    var form = this.formularioRegistro.value;
+    var IsExist= false;
+    var IsValidPass= false;
+    if(this.formularioRegistro.invalid){
+      console.log("alerta error invalido")
+    }
+    else{
+      this.newUsuario.usuario = form.usuario,
+      this.newUsuario.id = form.id,
+      this.newUsuario.contrasenna = form.contrasenna,
+      this.newUsuario.recontrasenna = form.recontrasenna,
+      this.newUsuario.modified = form.modified,
+      this.newUsuario.carrera = form.carrera,
+      this.newUsuario.semestre = form.semestre,
+      
+      this.usuarioservice.getDatos().then(data=>{
+        this.datos=data;
+        if(!data || data.length==0){
+          this.usuarioservice.addDatos(this.newUsuario).then(dato=>{
+            this.newUsuario=<Datos>{};
+            this.showToast('¡Usuario creado con exito!')
+          });
+        }
+        else{
+          for(let obj of this.datos){
+            if(this.newUsuario.usuario==obj.usuario){
+              IsExist=true;
+            }
+            if(this.newUsuario.contrasenna== this.newUsuario.recontrasenna){
+              IsValidPass=true;
+            }
+          }
+          if(IsExist){
+            console.log("ERROR, YA EXISTE, FALSO")
+            this.formularioRegistro.reset();
+          }
+          else if(IsValidPass==false){
+            console.log("Reingrese su contrasenna y validacion")
+            this.formularioRegistro.reset();
+          }
+          else{
+            this.usuarioservice.addDatos(this.newUsuario).then(data=>{
+              // var carreraTOUP=form.carrera.toUpperCase();
+              // if(carreraTOUP=="INGENIERIA INFORMATICA"||carreraTOUP=="INGENIERA MECANICA"||carreraTOUP=="INGENIERIA COMERCIAL"||carreraTOUP=="INGENIERIA EN COMERCIO EXTERIOR"||carreraTOUP=="ingenieria en comercio exterior"){
+                this.router.navigate(['inisespro'])    
+                console.log("No existe el usuario, se permite registrar")
+              
+              // else{
+              //   console.log("Necesita ingresar Ingenieria Informatica, ingenieria mecanica, Ingenieria comercial, Ingenieria en comercio exterior ")
+              // }
+              this.newUsuario=<Datos>{};
+              this.showToast("Se creo usuario")
+            }); 
+            this.formularioRegistro.reset();
+
           }
         }
-        else if((this.usuarios[index].usuario)!=(form.usuario)){
-          b++;      
-          if(b==this.usuarios.length){
-            for (let index = 0; index < form.contrasenna.length; index++) {
-              c++
-            }
-            if(c>=5){
-              carreraTOUP=form.carrera.toUpperCase();
-              if(carreraTOUP=="INGENIERIA INFORMATICA"||carreraTOUP=="INGENIERA MECANICA"||carreraTOUP=="INGENIERIA COMERCIAL"||carreraTOUP=="INGENIERIA EN COMERCIO EXTERIOR"||carreraTOUP=="ingenieria en comercio exterior"){
-                    this.storageService.addDatos(this.newUsuario).then(dato =>{
-                      this.newUsuario = <Datos>{};
-                      this.showToast('Datos Agregados!');
-                      this.loadDatos();
-                    })
-                    console.log(form)
-                    this.usuario=form;
-                    this.data = this.usuario
-                    this.apiService.createItem(this.data).subscribe((response) => {
-                      console.log("submit")
-                    });
-                    this.newDato = this.usuario;
-                    this.newDato.modified= Date.now();
-                    this.newDato.id= Date.now();
-                    this.storageService.addDatos(this.newDato).then(dato=>{
-                      this.newDato=<Datos>{};
-                      this.showToast('¡Datos Agregados!');
-                      this.loadDatos();
-                    })
-                    this.router.navigate(['inisespro'])    
-                    console.log("No existe el usuario, se permite registrar")
-                    break;
-                }
-              }
-              else{
-                console.log("Necesita ingresar Ingenieria Informatica, ingenieria mecanica, Ingenieria comercial, Ingenieria en comercio exterior ")
-              }
-            }
-            else{
-              console.log("necesita ingresar de 5 a más caracteres")
-            }
-          }
-        }    
-        // else{
-        //   console.log("simplemente no existio")
-        // }
       })
+    }
   }
+
+// ALERTAS
+
+async alertError1(){
+  const alert = await this.alertController.create({ 
+    header: '¡Error!',
+    message: '¡Debe completar todos los datos!',
+    buttons: ['Aceptar']
+  })
+  await alert.present();
+}
+
+async alertError2(){
+  const alert = await this.alertController.create({ 
+    header: '¡Error!',
+    message: 'Debe completar el campo de Usuario correctamente. ¡Este debe tener de 5 a más caracteres!',
+    buttons: ['Aceptar']
+  })
+  await alert.present();
+}
+
+async alertError3(){
+  const alert = await this.alertController.create({ 
+    header: '¡Error!',
+    message: 'Debe completar el campo de CONTRASENNA correctamente. ¡Este debe tener sobre 8 carácteres!',
+    buttons: ['Aceptar']
+  })
+  await alert.present();
+}
+
+async alertError4(){
+  const alert = await this.alertController.create({ 
+    header: '¡Error!',
+    message: 'El campo de validacion Contrasenna no es valido. ¡Reescriba correctamente su PASS!',
+    buttons: ['Aceptar']
+  })
+  await alert.present();
+}
+
+async alertError5(){
+  const alert = await this.alertController.create({ 
+    header: '¡Error!',
+    message: 'Debe ingresar correctamente su campo de carrera ¡Vuelva a intentarlo!',
+    buttons: ['Aceptar']
+  })
+  await alert.present();
+}
+
+async alertCorreoDuplicado(){
+  const alert = await this.alertController.create({ 
+    header: '¡Error!',
+    message: 'El Usuario ingresado ya existe',
+    buttons: ['Aceptar']
+  })
+  await alert.present();
+}
+
+// Fin de ALERTAS
 //update
 updateDatos(dato:Datos){
   dato.usuario= `UPDATED: ${dato.usuario}`;
@@ -181,10 +232,7 @@ async showToast(msg){
 }
 
   ngOnInit() {
-    this.usuarioservice.getUsers().subscribe(resp =>{
-      console.log('usuarios', resp);
-      this.usuarios= resp
-    })
+    
   }
     
   carrera: Carrera[]=[

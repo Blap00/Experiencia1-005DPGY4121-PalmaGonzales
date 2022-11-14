@@ -8,8 +8,7 @@
     </ion-header>
 
     <ion-content>
-   
-      <ion-list>
+        <ion-list>
         <ion-menu-toggle *ngFor="let c of componentes">
           <ion-item [routerLink]="c.redirecTo" detail=true>
              <ion-icon slot="start" [name]="c.icon" color="primary"></ion-icon>
@@ -59,10 +58,6 @@
 
     </ion-content>
   </ion-menu>
-
-
-
-
 
   <ion-router-outlet id="main"></ion-router-outlet>
   <ion-router-outlet id="main2"></ion-router-outlet>

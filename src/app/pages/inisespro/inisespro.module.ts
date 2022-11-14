@@ -8,12 +8,14 @@ import { InisesproPageRoutingModule } from './inisespro-routing.module';
 
 import { InisesproPage } from './inisespro.page';
 
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InisesproPageRoutingModule
+    InisesproPageRoutingModule,
+    ReactiveFormsModule,
   ],
   declarations: [InisesproPage]
 })

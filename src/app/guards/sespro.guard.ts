@@ -13,6 +13,7 @@ export class SesproGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if(localStorage.getItem('ingresapro')){
+      this.router.navigate(['/inicio-inicio'])
       return true;
     }
     else if(localStorage.getItem('ingresaalu')){

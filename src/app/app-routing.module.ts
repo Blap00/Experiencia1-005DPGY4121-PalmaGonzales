@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path: 'inisesalu',
     loadChildren: () => import('./pages/inisesalu/inisesalu.module').then( m => m.InisesaluPageModule),
-    // canActivate:[SesnopGuard],
+    canActivate:[SesnopGuard],
     
   },
   {
@@ -86,8 +86,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reg-asistencia/reg-asistencia.module').then( m => m.RegAsistenciaPageModule),
     canActivate:[SesproGuard]
   },
+  {
+    path: 'feriados-alu',
+    loadChildren: () => import('./pages/feriados-alu/feriados-alu.module').then( m => m.FeriadosAluPageModule),
+    canActivate:[SesaluGuard],
+  },
+  {
+    path: 'feriados-pro',
+    loadChildren: () => import('./pages/feriados-pro/feriados-pro.module').then( m => m.FeriadosProPageModule),
+    canActivate:[SesproGuard]
+  },
+
 ];
-//Si ocurre conflicto, utilizar siguientes comandos en la consola
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

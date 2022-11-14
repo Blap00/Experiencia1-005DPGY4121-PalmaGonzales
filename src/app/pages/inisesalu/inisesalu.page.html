@@ -27,14 +27,14 @@
 <ion-content>
     <ion-toolbar style="width: 100%; height: 97.6%; padding-top: 5vw;" color=" bodycol">
       <!-- Aqui va el material de la pagina -->
-      <form  #formulario="ngForm" >
+      <form  #formulario="ngForm" [formGroup]="formularioLogin" >
         <ion-item style=" border-top-left-radius: 70%;border-top-right-radius: 70%; opacity: 65%; text-align: center;">
           <ion-label position="floating" color="primary" >Usuario: <ion-text color="danger">*</ion-text></ion-label>
-          <ion-input color="blanquito" required type="text" required placeholder="Digite Usuario: " name="user" [(ngModel)]="usuario.user"></ion-input>
+          <ion-input color="blanquito" required type="text" required placeholder="Digite Usuario: " name="user" formControlName="user"></ion-input>
         </ion-item>
         <ion-item style=" border-bottom-left-radius: 70%;border-bottom-right-radius: 70%; opacity: 65%; text-align: center;">
           <ion-label  position="floating" color="primary" >Contraseña: <ion-text color="danger">*</ion-text></ion-label>
-          <ion-input color="blanquito" required type="password" required placeholder="Digite Contraseña: " name="pass" [(ngModel)]="usuario.pass"></ion-input>
+          <ion-input color="blanquito" required type="password" required placeholder="Digite Contraseña: " name="pass" formControlName="pass"></ion-input>
         </ion-item>
   
         <ion-button [disabled] =" formulario.invalid" expand="full" color="primary" type="submit" (click)="buscarUser()" >

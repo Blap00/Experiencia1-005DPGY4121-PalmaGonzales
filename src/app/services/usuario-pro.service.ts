@@ -5,7 +5,9 @@ export interface Datos{
   id: number;
   usuario: string;
   contrasenna: string;
+  recontrasenna:String;
   carrera: string;
+  semestre: string;
   modified: number;
 }
 const ITEMS_KEY= 'my-dato';

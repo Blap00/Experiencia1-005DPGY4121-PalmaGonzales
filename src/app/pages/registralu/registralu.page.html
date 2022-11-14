@@ -31,15 +31,24 @@
       </ion-item>
       <ion-item style=" opacity: 75%; text-align: center;">
         <ion-label  position="floating" color="primary" >Contraseña: <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input color="blanquito" type="texto" required placeholder="Digite Contraseña: " name="pass" formControlName="contrasenna"></ion-input>
+        <ion-input color="blanquito" type="password" required placeholder="Digite Contraseña: " name="pass" formControlName="contrasenna"></ion-input>
       </ion-item>
       <ion-item style=" opacity: 75%; text-align: center;">
+        <ion-label  position="floating" color="primary" >Revalide la Contraseña: <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input color="blanquito" type="password" required placeholder="Revalide Contraseña: " name="pass" formControlName="recontrasenna"></ion-input>
+      </ion-item>
+
+      <ion-item style=" opacity: 75%; text-align: center;">
         <ion-label  position="floating" color="primary" >Carrera: <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input color="blanquito" type="texto" required placeholder="Digite su carrera: " name="carr" formControlName="carrera" ></ion-input>
+          <ion-select color="blanquito" name="carr" value="" placeholder="seleccione su carrera" formControlName="carrera">
+            <ion-select-option color="primary" *ngFor="let c of carrera" [value]="[c.name]">{{c.name}}</ion-select-option>          </ion-select>
+        <!-- <ion-input color="blanquito" type="texto" required placeholder="Digite su carrera: " name="carr" formControlName="carrera" ></ion-input> -->
       </ion-item>
       <ion-item style=" opacity: 75%; text-align: center;">
         <ion-label  position="floating" color="primary" >Semestre: <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input color="blanquito" type="texto" required placeholder="Digite su semestre: " name="seme" formControlName="semestre" ></ion-input>
+          <ion-select color="blanquito" name="carr" value="" placeholder="seleccione su carrera" formControlName="semestre">
+            <ion-select-option color="primary" *ngFor="let c of semestre" [value]="[c.sem]">{{c.sem}}</ion-select-option>          </ion-select>
+        <!-- <ion-input color="blanquito" type="texto" required placeholder="Digite su carrera: " name="carr" formControlName="carrera" ></ion-input> -->
       </ion-item>
       <ion-button [disabled] ="formulario.invalid" expand="full" 
        color="primary" type="submit" (click)="submitForm()" >

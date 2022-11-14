@@ -14,6 +14,7 @@ export class SesaluGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(localStorage.getItem('ingresaalu')){
+        this.router.navigate(['/alumno'])
         return true;
       }
       else if(localStorage.getItem('ingresapro')){

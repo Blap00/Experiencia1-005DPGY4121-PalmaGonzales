@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiAlmJson } from '../../interface/interfaceAlu';
-import { UsuariosService } from 'src/app/services/usuarios.service';
+import { UsuarioAluService, Datos } from 'src/app/services/usuario-alu.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 interface Carrera{
   name: string;
@@ -20,9 +20,15 @@ interface Semestre{
   styleUrls: ['./inisespro.page.scss'],
 })
 export class InisesproPage implements OnInit {
-  usuarios: ApiAlmJson[]= [];
-  usuariover: [];
-  constructor(private usuarioservice: UsuariosService, private router: Router, private alertcontroller:AlertController ) { }
+  formularioLogin: FormGroup;
+  usuarios : Datos[] = [];
+  constructor(private usuarioservice: UsuarioAluService, private router: Router, private alertcontroller:AlertController, 
+    private fb: FormBuilder) { 
+      this.formularioLogin = this.fb.group({ 
+        'user' : new FormControl("", Validators.required),
+        'pass' : new FormControl ("", Validators.required)                
+      })
+    }
   usuario={
     user:'',
     pass:'',
@@ -67,78 +73,110 @@ export class InisesproPage implements OnInit {
     },
     
   ];
-  ngOnInit() {
-    this.usuarioservice.getUsers().subscribe(resp =>{
-      console.log('usuarios', resp);
-      this.usuarios= resp
-    })
+  ngOnInit() {    
   }
-  async alerta1() {
-    const alert = await this.alertcontroller.create({
-      header: 'Datos de inicio de sesión erroneos',
-      message: 'Nombre de usuario o contraseña estan erroneos',
-      buttons: ['OK'], 
-    });
-    await alert.present();
-  }
-  async alerta2() {
-    const alert = await this.alertcontroller.create({
-      header: 'Datos de inicio de sesión erroneos',
-      message: 'El usuario tiene otro Rol dentro de la aplicación',
-      buttons: ['OK'], 
-    });
-    await alert.present();
-  }
-  async alerta3() {
-    const alert = await this.alertcontroller.create({
-      header: 'Error desconocido',
-      message: 'El usuario No puede ingresar por motivos desconocidos',
-      buttons: ['OK'], 
-    });
-    await alert.present();
-  }
-
   buscarUser(){
-    this.usuarioservice.getUsers()
-    .subscribe(resp =>{
-      for (let index = 0; index<=this.usuarios.length; index++) {
-        if((this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass) && (this.usuarios[index].semestre==null)){
-          console.log("Docente ingresado");
-          localStorage.setItem('ingresapro', 'true')
-          localStorage.setItem('sesnop', 'false')
+    var f = this.formularioLogin.value;
+    var a=0;
+    this.usuarioservice.getDatos().then(datos=>{ 
+      this.usuarios = datos; 
+      if (!datos || datos.length==0){
+        return null;
+      }
+      for (let obj of this.usuarios){
+        if (f.user == obj.usuario && f.pass==obj.contrasenna){
+          a=1;
+          console.log('ingresado');
+          console.log(localStorage.clear());
+          localStorage.setItem('ingresapro','true');
           this.router.navigate(['/inicio-inicio']);
-          break;
-        }      
-        else if((this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass)){
-          if((this.usuarios[index].semestre!=null)){
-          console.log("El usuario no pertenece al rol de docente");
-          this.alerta2();
-          break;
+          if(f.user != obj.usuario && f.pass==obj.contrasenna){
+            a=0
+            console.log("Mal ingresado el usuario")
           }
-          else{
-            console.log("Error desconocido")
-            this.alerta3();
-            break
+          if(f.user == obj.usuario && f.pass!=obj.contrasenna){
+            a=2
+            console.log("Mal ingresado la contrasenna")
           }
+          if(f.user != obj.usuario && f.pass!=obj.contrasenna){
+            a=3
+            console.log("Mal ingresado todo")
+          }
+          // if(obj.semestre==null){
+          //   a=4
+          //   console.log("El usuario ingreso mal su rol")
+          // }
         }
-        if((this.usuarios[index].usuario)!=(this.usuario.user) && (this.usuarios[index].contrasenna)==(this.usuario.pass) || (this.usuarios[index].usuario)==(this.usuario.user) && (this.usuarios[index].contrasenna)!=(this.usuario.pass)) {
-          console.log(this.usuarios[index].semestre.length)
-          if(this.usuarios[index].semestre==null){
-            console.log("datos erroneos")
-            this.alerta1();
-            break;
-          }
-          else{            
-          console.log("datos erroneos y no existe en docente tabla")
-          this.alerta1();
-          this.alerta2();
-          break;
-          }
-        }
-        
+      }//findelfor
+      if(a==0){
+        this.alertMsg2();
+      }
+      else if(a==3){
+        this.alertMsg1();
+      }
+      else if(a==2){
+        this.alertMsg3();
+      }
+      else if(a==4){
+        this.alertMsg4();
       }
     })
+  }//findelmetodo
+  async alertMsg1(){
+    const alert = await this.alertcontroller.create({
+      header: '¡Error!',
+      message: 'Los datos ingresados son incorrectos',
+      buttons: ['Aceptar']
+    })
+    await alert.present();
+    return;
   }
-  onSubmit(){
+  async alertMsg2(){
+    const alert = await this.alertcontroller.create({
+      header: '¡Error!',
+      message: 'Los datos ingresados en el campo de usuario son incorrectos',
+      buttons: ['Aceptar']
+    })
+    await alert.present();
+    return;
   }
+  async alertMsg3(){
+    const alert = await this.alertcontroller.create({
+      header: '¡Error!',
+      message: 'Los datos ingresados en el campo de contrasenna son incorrectos',
+      buttons: ['Aceptar']
+    })
+    await alert.present();
+    return;
+  }
+  handlerMessage=""
+  async alertMsg4(){
+
+    const alert = await this.alertcontroller.create({
+      header: '¡Error!',
+      message: 'Los datos ingresados por el rol son incorrectos',
+      buttons: [
+        {
+          text: 'Cambiar a alumno',
+          role: 'cancel',
+          handler: () => {
+            this.handlerMessage = 'acepto cambiar el rol';
+            this.router.navigate(['/inisesalu'])
+          },
+        },
+        {
+          text: 'Cambiar datos',
+          role: 'cancel',
+          handler: () => {
+            this.handlerMessage = 'Confirmo el cerrar la sesión, necesitara Abrir la cuenta nuevamente';
+
+          },
+        },
+      ]
+    })
+    await alert.present();
+    return;
+  }
+  
+  onSubmit(){}
 }
