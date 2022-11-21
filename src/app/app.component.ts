@@ -29,7 +29,7 @@ export class AppComponent {
       
     }
     cerrarSesionAlu(){
-      console.log(localStorage.removeItem('ingresaalu'))
+      console.log(localStorage.clear())
       localStorage.setItem('sesnop','true')
       this.menuController.enable(false, 'second')
     }
@@ -66,7 +66,7 @@ export class AppComponent {
       await alert.present();
     }
     cerrarSesionPro(){
-      console.log(localStorage.removeItem('ingresapro'));
+      console.log(localStorage.clear());
       localStorage.setItem('sesnop','true');
       this.menuController.enable(false, 'first')
     }
@@ -115,7 +115,7 @@ export class AppComponent {
     {
       icon: 'calendar-number-outline',
       name: 'Fechas con Feriados',
-      redirecTo: '/feriado-pro'
+      redirecTo: '/feriados-pro'
     },
     
   ];
@@ -145,7 +145,7 @@ export class AppComponent {
     {
       icon: 'calendar-number-outline',
       name: 'Fechas con Feriados',
-      redirecTo: '/feriado-alu'
+      redirecTo: '/feriados-alu'
     },
   ];
   alumnocomponentes1: ComponenteAlumno[]=[

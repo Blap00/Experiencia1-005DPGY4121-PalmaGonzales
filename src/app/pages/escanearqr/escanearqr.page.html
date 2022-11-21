@@ -21,10 +21,16 @@
 
 <ion-content padding>
   <ion-card>
-    <p class="ttexto">Abrir Cámara para escanear QR:</p>
-    <ion-button class="boton" ion-button-color="primary" block (click)="alerta()">
-      Escanear QR
-      <ion-icon name="camera"></ion-icon>
-    </ion-button>
+    <form action="">
+      <!-- <ion-item>
+        <ion-label position="floating">nombre1 <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input  required [(ngModel)]="usu.nombre1" name="nombre1" type="text"></ion-input>
+      </ion-item> -->
+      <p class="ttexto">Abrir Cámara para escanear QR:</p>
+      <ion-button class="boton" ion-button-color="primary" block (click)="alerta()">
+        Escanear QR
+        <ion-icon name="camera"></ion-icon>
+      </ion-button>
+    <!-- </form> -->
   </ion-card>
 </ion-content>

@@ -8,15 +8,17 @@ import { HttpClientModule} from '@angular/common/http';
 // import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@awesome-cordova-plugins/camera-preview/ngx';
 import { FormsModule } from '@angular/forms';
 
-
+import {QRCodeModule } from 'angularx-qrcode';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {IonicStorageModule} from '@ionic/storage-angular'
 import { Drivers } from '@ionic/storage';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FeriadoService } from './services/feriado.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    QRCodeModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule, 
@@ -32,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [
     // CameraPreview,
     // Camera,
+    FeriadoService,
     { 
       provide: RouteReuseStrategy, useClass: IonicRouteStrategy 
     },

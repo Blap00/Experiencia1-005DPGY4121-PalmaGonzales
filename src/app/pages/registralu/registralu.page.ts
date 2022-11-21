@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core'; 
 import { UsuarioAluService, Datos } from 'src/app/services/usuario-alu.service';
-import { Platform, ToastController, IonList } from '@ionic/angular';
+import { Platform, ToastController, IonList, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {
   FormGroup,
@@ -9,6 +9,7 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import {AlertController} from '@ionic/angular';
+import { identity } from 'rxjs';
 
 interface Carrera{
   name: string;
@@ -42,7 +43,7 @@ export class RegistraluPage implements OnInit {
   data: Datos=<Datos>{};
   usuario:datousu
   usuarionue={
-    id: 0,
+    id: Date.now(),
     usuario:'',
     contrasenna:'',  
     recontrasenna:'',  
@@ -50,16 +51,18 @@ export class RegistraluPage implements OnInit {
     semestre:'',
     modified: 0,
 }
+
   constructor(
     private usuarioservice:UsuarioAluService,
     private router:Router,
     private storageService: UsuarioAluService,
     private plt: Platform, private toastController: ToastController,
     private alertController : AlertController,
+    private navController: NavController,
     private fb: FormBuilder) 
     {
       this.formularioRegistro = this.fb.group({
-        'id': this.data.id,
+        'id': this.usuarionue.id,
         'usuario': new FormControl("", Validators.required),
         'contrasenna': new FormControl("", Validators.required),
         'recontrasenna': new FormControl("", Validators.required),
@@ -87,6 +90,7 @@ export class RegistraluPage implements OnInit {
       console.log("alerta error invalido")
     }
     else{
+      
       this.newUsuario.usuario = form.usuario,
       this.newUsuario.id = form.id,
       this.newUsuario.contrasenna = form.contrasenna,
@@ -122,14 +126,8 @@ export class RegistraluPage implements OnInit {
           }
           else{
             this.usuarioservice.addDatos(this.newUsuario).then(data=>{
-              // var carreraTOUP=form.carrera.toUpperCase();
-              // if(carreraTOUP=="INGENIERIA INFORMATICA"||carreraTOUP=="INGENIERA MECANICA"||carreraTOUP=="INGENIERIA COMERCIAL"||carreraTOUP=="INGENIERIA EN COMERCIO EXTERIOR"||carreraTOUP=="ingenieria en comercio exterior"){
-                this.router.navigate(['inisespro'])    
+                this.router.navigate(['inisesalu'])    
                 console.log("No existe el usuario, se permite registrar")
-              // }
-              // else{
-              //   console.log("Necesita ingresar Ingenieria Informatica, ingenieria mecanica, Ingenieria comercial, Ingenieria en comercio exterior ")
-              // }
               this.newUsuario=<Datos>{};
               this.showToast("Se creo usuario")
             }); 
@@ -166,7 +164,23 @@ export class RegistraluPage implements OnInit {
     toast.present();
   }
   ngOnInit() {
-
+    if(localStorage.getItem('sesnop')){
+      localStorage.setItem('sesnop','true')
+      localStorage.removeItem('ingresaalu')
+      localStorage.removeItem('ingresapro')
+    }
+    else if(localStorage.getItem('ingresapro')){
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+      this.navController.navigateRoot(['/inicio-inicio'])
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresapro')
+      localStorage.setItem('ingresaalu','true')
+      this.navController.navigateRoot(['/alumno'])
+    }
   }
   carrera: Carrera[]=[
     {

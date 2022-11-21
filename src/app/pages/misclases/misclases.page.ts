@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular'; 
-import { AlertController} from '@ionic/angular';
+import { AlertController, NavController} from '@ionic/angular';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-misclases',
@@ -11,7 +11,7 @@ export class MisclasesPage implements OnInit {
 
   constructor(private menuController: MenuController,
     private alertController: AlertController,
-    private routerLink: Router) { }
+    private routerLink: Router, private navController:NavController) { }
 handlerMessage = '';
 roleMessage = '';
 
@@ -33,6 +33,23 @@ handler: () => {
 await alert.present();
 }
   ngOnInit() {
+    if(localStorage.getItem('sesnop')){
+      localStorage.setItem('sesnop','true')
+      localStorage.removeItem('ingresaalu')
+      localStorage.removeItem('ingresapro')
+      this.navController.navigateRoot(['/inicio']);
+    }
+    else if(localStorage.getItem('ingresapro')){
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+      this.navController.navigateRoot(['/inicio-inicio'])
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresapro')
+      localStorage.setItem('ingresaalu','true')
+    }
   }
   mostrarMenu(){
 

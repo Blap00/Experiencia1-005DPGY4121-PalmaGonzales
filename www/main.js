@@ -11,15 +11,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppRoutingModule": () => (/* binding */ AppRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _guards_sesalu_guard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./guards/sesalu.guard */ 427);
-/* harmony import */ var _guards_sesnop_guard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./guards/sesnop.guard */ 9963);
-/* harmony import */ var _guards_sespro_guard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./guards/sespro.guard */ 9391);
-
-
-
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 124);
 
 
 
@@ -32,98 +26,87 @@ const routes = [
     {
         path: 'index',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_index_index_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/index/index.module */ 1023)).then(m => m.IndexPageModule),
-        // canActivate:[SesnopGuard]
     },
     {
         path: 'nec-ayu',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_nec-ayu_nec-ayu_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/nec-ayu/nec-ayu.module */ 4336)).then(m => m.NecAyuPageModule),
-        // canActivate:[SesnopGuard]
     },
     {
         path: 'err',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_err_err_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/err/err.module */ 1774)).then(m => m.ERRPageModule),
-        // canActivate:[SesnopGuard]
     },
     {
         path: 'inicio',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_inicio_inicio_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/inicio/inicio.module */ 3633)).then(m => m.InicioPageModule),
-        // canActivate:[SesnopGuard]
     },
     {
         path: 'inisesalu',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_inisesalu_inisesalu_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/inisesalu/inisesalu.module */ 3096)).then(m => m.InisesaluPageModule),
-        canActivate: [_guards_sesnop_guard__WEBPACK_IMPORTED_MODULE_1__.SesnopGuard],
     },
     {
         path: 'inisespro',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_inisespro_inisespro_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/inisespro/inisespro.module */ 7199)).then(m => m.InisesproPageModule),
-        // canActivate:[SesnopGuard]
     },
     {
         path: 'registralu',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registralu_registralu_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registralu/registralu.module */ 9943)).then(m => m.RegistraluPageModule),
-        // canActivate:[SesnopGuard]
     },
     {
         path: 'registrpro',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registrpro_registrpro_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registrpro/registrpro.module */ 9236)).then(m => m.RegistrproPageModule),
-        // canActivate:[SesnopGuard]
     },
     {
         path: 'alumno',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_alumno_alumno_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/alumno/alumno.module */ 4177)).then(m => m.AlumnoPageModule),
-        canActivate: [_guards_sesalu_guard__WEBPACK_IMPORTED_MODULE_0__.SesaluGuard]
+        // canActivate:[SesaluGuard]
     },
     {
         path: 'codigoqr',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_codigoqr_codigoqr_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/codigoqr/codigoqr.module */ 2707)).then(m => m.CodigoqrPageModule),
-        canActivate: [_guards_sespro_guard__WEBPACK_IMPORTED_MODULE_2__.SesproGuard]
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_codigoqr_codigoqr_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/codigoqr/codigoqr.module */ 2707)).then(m => m.CodigoqrPageModule),
+        // canActivate:[SesproGuard]
     },
     {
         path: 'escanearqr',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_escanearqr_escanearqr_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/escanearqr/escanearqr.module */ 7813)).then(m => m.EscanearqrPageModule),
-        canActivate: [_guards_sesalu_guard__WEBPACK_IMPORTED_MODULE_0__.SesaluGuard]
+        // canActivate:[SesaluGuard]
     },
     {
         path: 'hde-clases',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_hde-clases_hde-clases_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/hde-clases/hde-clases.module */ 2389)).then(m => m.HdeClasesPageModule),
-        canActivate: [_guards_sespro_guard__WEBPACK_IMPORTED_MODULE_2__.SesproGuard]
+        // canActivate:[SesproGuard]
     },
     {
         path: 'inicio-inicio',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_inicio-inicio_inicio-inicio_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/inicio-inicio/inicio-inicio.module */ 9390)).then(m => m.InicioInicioPageModule),
-        canActivate: [_guards_sespro_guard__WEBPACK_IMPORTED_MODULE_2__.SesproGuard]
+        // canActivate:[SesproGuard]
     },
     {
         path: 'misclases',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_misclases_misclases_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/misclases/misclases.module */ 5474)).then(m => m.MisclasesPageModule),
-        canActivate: [_guards_sesalu_guard__WEBPACK_IMPORTED_MODULE_0__.SesaluGuard]
+        // canActivate:[SesaluGuard]
     },
     {
         path: 'reg-asistencia',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_reg-asistencia_reg-asistencia_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/reg-asistencia/reg-asistencia.module */ 1304)).then(m => m.RegAsistenciaPageModule),
-        canActivate: [_guards_sespro_guard__WEBPACK_IMPORTED_MODULE_2__.SesproGuard]
+        // canActivate:[SesproGuard]
     },
-    // {
-    //   path: 'feriados-alu',
-    //   loadChildren: () => import('./pages/feriados-alu/feriados-alu.module').then( m => m.FeriadosAluPageModule),
-    //   canActivate:[SesaluGuard],
-    // },
-    // {
-    //   path: 'feriados-pro',
-    //   loadChildren: () => import('./pages/feriados-pro/feriados-pro.module').then( m => m.FeriadosProPageModule),
-    //   canActivate:[SesproGuard]
-    // },
+    {
+        path: 'feriados-alu',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_feriados-alu_feriados-alu_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/feriados-alu/feriados-alu.module */ 588)).then(m => m.FeriadosAluPageModule),
+    },
+    {
+        path: 'feriados-pro',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_feriados-pro_feriados-pro_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/feriados-pro/feriados-pro.module */ 6139)).then(m => m.FeriadosProPageModule),
+    },
 ];
-//Si ocurre conflicto, utilizar siguientes comandos en la consola
 let AppRoutingModule = class AppRoutingModule {
 };
-AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.NgModule)({
+AppRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.NgModule)({
         imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_5__.PreloadAllModules })
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule.forRoot(routes, { preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_2__.PreloadAllModules })
         ],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterModule]
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterModule]
     })
 ], AppRoutingModule);
 
@@ -179,6 +162,10 @@ let AppComponent = class AppComponent {
       icon: 'calendar-outline',
       name: 'Horario de Clases',
       redirecTo: '/hde-clases'
+    }, {
+      icon: 'calendar-number-outline',
+      name: 'Fechas con Feriados',
+      redirecTo: '/feriados-pro'
     }];
     this.componentes1 = [{
       icon: 'exit-outline',
@@ -197,6 +184,10 @@ let AppComponent = class AppComponent {
       icon: 'home-outline',
       name: 'Escanear QR',
       redirecTo: '/escanearqr'
+    }, {
+      icon: 'calendar-number-outline',
+      name: 'Fechas con Feriados',
+      redirecTo: '/feriados-alu'
     }];
     this.alumnocomponentes1 = [{
       icon: 'exit-outline',
@@ -206,7 +197,7 @@ let AppComponent = class AppComponent {
   }
 
   cerrarSesionAlu() {
-    console.log(localStorage.removeItem('ingresaalu'));
+    console.log(localStorage.clear());
     localStorage.setItem('sesnop', 'true');
     this.menuController.enable(false, 'second');
   }
@@ -250,7 +241,7 @@ let AppComponent = class AppComponent {
   }
 
   cerrarSesionPro() {
-    console.log(localStorage.removeItem('ingresapro'));
+    console.log(localStorage.clear());
     localStorage.setItem('sesnop', 'true');
     this.menuController.enable(false, 'first');
   }
@@ -316,17 +307,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppModule": () => (/* binding */ AppModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser */ 4497);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser */ 4497);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var angularx_qrcode__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angularx-qrcode */ 9180);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component */ 5041);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-routing.module */ 158);
-/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/storage-angular */ 7566);
+/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/storage-angular */ 7566);
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/storage */ 190);
+/* harmony import */ var _services_feriado_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/feriado.service */ 6950);
 
 
 
@@ -341,19 +334,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 let AppModule = class AppModule {
 };
-AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.NgModule)({
+AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.NgModule)({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent],
         imports: [
-            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.ReactiveFormsModule,
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__.BrowserModule,
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule.forRoot(),
+            angularx_qrcode__WEBPACK_IMPORTED_MODULE_6__.QRCodeModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_7__.FormsModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_7__.ReactiveFormsModule,
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_8__.BrowserModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.IonicModule.forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule,
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_8__.HttpClientModule,
-            _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_9__.IonicStorageModule.forRoot({
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_10__.HttpClientModule,
+            _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_11__.IonicStorageModule.forRoot({
                 name: 'mydb',
                 driverOrder: [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__.Drivers.IndexedDB, _ionic_storage__WEBPACK_IMPORTED_MODULE_2__.Drivers.LocalStorage]
             }),
@@ -361,8 +357,9 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
         providers: [
             // CameraPreview,
             // Camera,
+            _services_feriado_service__WEBPACK_IMPORTED_MODULE_3__.FeriadoService,
             {
-                provide: _angular_router__WEBPACK_IMPORTED_MODULE_10__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicRouteStrategy
+                provide: _angular_router__WEBPACK_IMPORTED_MODULE_12__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.IonicRouteStrategy
             },
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent],
@@ -373,150 +370,47 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
-/***/ 427:
-/*!****************************************!*\
-  !*** ./src/app/guards/sesalu.guard.ts ***!
-  \****************************************/
+/***/ 6950:
+/*!*********************************************!*\
+  !*** ./src/app/services/feriado.service.ts ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SesaluGuard": () => (/* binding */ SesaluGuard)
+/* harmony export */   "FeriadoService": () => (/* binding */ FeriadoService)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ 8987);
 
 
 
-let SesaluGuard = class SesaluGuard {
-    constructor(router) {
-        this.router = router;
+let FeriadoService = class FeriadoService {
+    constructor(http) {
+        this.http = http;
+        this.httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__.HttpHeaders({
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            })
+        };
+        this.corsSolution = 'https://cors-anywhere.herokuapp.com/'; //don't work ERROR 403
+        this.restapiURL = 'https://apis.digital.gob.cl/fl/feriados';
     }
-    canActivate(route, state) {
-        if (localStorage.getItem('ingresaalu')) {
-            return true;
-        }
-        else if (localStorage.getItem('ingresapro')) {
-            this.router.navigate(['/inicio-inicio']);
-            return false;
-        }
-        else {
-            this.router.navigate(['/inicio']);
-            return false;
-        }
-        return true;
+    getFeriados() {
+        return this.http.get(`${this.restapiURL}/2022`);
     }
 };
-SesaluGuard.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_0__.Router }
+FeriadoService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_0__.HttpClient }
 ];
-SesaluGuard = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+FeriadoService = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
         providedIn: 'root'
     })
-], SesaluGuard);
-
-
-
-/***/ }),
-
-/***/ 9963:
-/*!****************************************!*\
-  !*** ./src/app/guards/sesnop.guard.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SesnopGuard": () => (/* binding */ SesnopGuard)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ 124);
-
-
-
-let SesnopGuard = class SesnopGuard {
-    constructor(router) {
-        this.router = router;
-    }
-    canActivate(route, state) {
-        if (localStorage.getItem('sesnop')) {
-            return true;
-        }
-        // else if(localStorage.getItem('ingresalu')){
-        //   this.router.navigate(['/alumno'])
-        //   return false;
-        // }
-        // else if(localStorage.getItem('ingresapro')){
-        //   this.router.navigate(['/inicio-inicio'])
-        //   return false;
-        // }
-        else {
-            this.router.navigate(['/inicio']);
-            return false;
-        }
-    }
-};
-SesnopGuard.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_0__.Router }
-];
-SesnopGuard = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
-        providedIn: 'root'
-    })
-], SesnopGuard);
-
-
-
-/***/ }),
-
-/***/ 9391:
-/*!****************************************!*\
-  !*** ./src/app/guards/sespro.guard.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SesproGuard": () => (/* binding */ SesproGuard)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ 124);
-
-
-
-let SesproGuard = class SesproGuard {
-    constructor(router) {
-        this.router = router;
-    }
-    canActivate(route, state) {
-        if (localStorage.getItem('ingresapro')) {
-            return true;
-        }
-        else if (localStorage.getItem('ingresaalu')) {
-            this.router.navigate(['/alumno']);
-            return false;
-        }
-        else {
-            this.router.navigate(['/inicio']);
-            return false;
-        }
-    }
-};
-SesproGuard.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_0__.Router }
-];
-SesproGuard = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
-        providedIn: 'root'
-    })
-], SesproGuard);
+], FeriadoService);
 
 
 
@@ -830,7 +724,7 @@ module.exports = webpackAsyncContext;
 /***/ ((module) => {
 
 "use strict";
-module.exports = ".par {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0FBQ0oiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBhcntcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufSJdfQ== */";
+module.exports = ".par {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0FBQ0oiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBhcntcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59Il19 */";
 
 /***/ }),
 
@@ -841,7 +735,7 @@ module.exports = ".par {\n  text-align: center;\n}\n/*# sourceMappingURL=data:ap
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\r\n\r\n  <ion-menu contentId=\"main\" menuId=\"first\" side=\"start\">\r\n    <ion-header>\r\n      <ion-toolbar>\r\n        <ion-title>Menú</ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n\r\n    <ion-content>\r\n        <ion-list>\r\n        <ion-menu-toggle *ngFor=\"let c of componentes\">\r\n          <ion-item [routerLink]=\"c.redirecTo\" detail=true>\r\n             <ion-icon slot=\"start\" [name]=\"c.icon\" color=\"primary\"></ion-icon>\r\n             {{ c.name }}\r\n          </ion-item>\r\n        </ion-menu-toggle>\r\n        <ion-menu-toggle *ngFor=\"let d of componentes1\">  \r\n          <ion-item (click)=\"alertapro()\" detail=true>\r\n            <ion-button  expand=\"full\" size=\"default\" fill=\"outline\" shape=\"round\">\r\n              <ion-icon  slot=\"start\" [name]=\"d.icon\" color=\"primary\"></ion-icon>\r\n              {{ d.name }}\r\n            </ion-button>\r\n         </ion-item>\r\n        </ion-menu-toggle>\r\n        </ion-list>\r\n\r\n\r\n    </ion-content>\r\n  </ion-menu>\r\n\r\n  <ion-menu contentId=\"main2\" menuId=\"second\">\r\n    <ion-header>\r\n      <ion-toolbar>\r\n        <ion-title>Menú Alumno</ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n\r\n    <ion-content>\r\n   \r\n      <ion-list>\r\n        <ion-menu-toggle *ngFor=\"let c of alumnocomponentes\">\r\n          <ion-item [routerLink]=\"c.redirecTo\" detail=true>\r\n             <ion-icon slot=\"start\" [name]=\"c.icon\" color=\"primary\"></ion-icon>\r\n             {{ c.name }}\r\n          </ion-item>\r\n        </ion-menu-toggle>\r\n        <ion-menu-toggle *ngFor=\"let d of alumnocomponentes1\">  \r\n          <ion-item (click)=\"alertaalu()\" detail=true>\r\n            <ion-button  expand=\"full\" size=\"default\" fill=\"outline\" shape=\"round\">\r\n              <ion-icon  slot=\"start\" [name]=\"d.icon\" color=\"primary\"></ion-icon>\r\n              {{ d.name }}\r\n            </ion-button>\r\n         </ion-item>\r\n        </ion-menu-toggle>\r\n      </ion-list>\r\n\r\n\r\n    </ion-content>\r\n  </ion-menu>\r\n\r\n  <ion-router-outlet id=\"main\"></ion-router-outlet>\r\n  <ion-router-outlet id=\"main2\"></ion-router-outlet>\r\n</ion-app>\r\n";
+module.exports = "<ion-app>\n\n  <ion-menu contentId=\"main\" menuId=\"first\" side=\"start\">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menú</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n        <ion-list>\n        <ion-menu-toggle *ngFor=\"let c of componentes\">\n          <ion-item [routerLink]=\"c.redirecTo\" detail=true>\n             <ion-icon slot=\"start\" [name]=\"c.icon\" color=\"primary\"></ion-icon>\n             {{ c.name }}\n          </ion-item>\n        </ion-menu-toggle>\n        <ion-menu-toggle *ngFor=\"let d of componentes1\">  \n          <ion-item (click)=\"alertapro()\" detail=true>\n            <ion-button  expand=\"full\" size=\"default\" fill=\"outline\" shape=\"round\">\n              <ion-icon  slot=\"start\" [name]=\"d.icon\" color=\"primary\"></ion-icon>\n              {{ d.name }}\n            </ion-button>\n         </ion-item>\n        </ion-menu-toggle>\n        </ion-list>\n\n\n    </ion-content>\n  </ion-menu>\n\n  <ion-menu contentId=\"main2\" menuId=\"second\">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menú Alumno</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n   \n      <ion-list>\n        <ion-menu-toggle *ngFor=\"let c of alumnocomponentes\">\n          <ion-item [routerLink]=\"c.redirecTo\" detail=true>\n             <ion-icon slot=\"start\" [name]=\"c.icon\" color=\"primary\"></ion-icon>\n             {{ c.name }}\n          </ion-item>\n        </ion-menu-toggle>\n        <ion-menu-toggle *ngFor=\"let d of alumnocomponentes1\">  \n          <ion-item (click)=\"alertaalu()\" detail=true>\n            <ion-button  expand=\"full\" size=\"default\" fill=\"outline\" shape=\"round\">\n              <ion-icon  slot=\"start\" [name]=\"d.icon\" color=\"primary\"></ion-icon>\n              {{ d.name }}\n            </ion-button>\n         </ion-item>\n        </ion-menu-toggle>\n      </ion-list>\n\n\n    </ion-content>\n  </ion-menu>\n\n  <ion-router-outlet id=\"main\"></ion-router-outlet>\n  <ion-router-outlet id=\"main2\"></ion-router-outlet>\n</ion-app>\n";
 
 /***/ })
 

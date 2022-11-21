@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioAluService, Datos } from 'src/app/services/usuario-alu.service';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 interface Carrera{
@@ -22,7 +22,7 @@ export class InisesaluPage implements OnInit {
   formularioLogin: FormGroup;
   usuarios: Datos[]= [];
 
-  constructor(private usuarioservice: UsuarioAluService, private router: Router, private alertcontroller:AlertController, 
+  constructor(private navController:NavController,private usuarioservice: UsuarioAluService, private router: Router, private alertcontroller:AlertController, 
     private fb: FormBuilder) { 
       this.formularioLogin = this.fb.group({ 
         'user' : new FormControl("", Validators.required),
@@ -73,54 +73,69 @@ export class InisesaluPage implements OnInit {
     
   ];
   ngOnInit() {
+    if(localStorage.getItem('sesnop')){
+      localStorage.setItem('sesnop','true')
+      localStorage.removeItem('ingresaalu')
+      localStorage.removeItem('ingresapro')
+    }
+    else if(localStorage.getItem('ingresapro')){
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+      this.navController.navigateRoot(['/inicio-inicio'])
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresapro')
+      localStorage.setItem('ingresaalu','true')
+      this.navController.navigateRoot(['/alumno'])
+    }
   }
-    buscarUser(){
-      var f = this.formularioLogin.value;
-      var a=0;
-      this.usuarioservice.getDatos().then(datos=>{ 
-        this.usuarios = datos; 
-        if (!datos || datos.length==0){
-          return null;
-        }
-        for (let obj of this.usuarios){
-          if (f.user == obj.usuario && f.pass==obj.contrasenna){
-            a=1;
-            console.log('ingresado');
-            console.log(localStorage.clear());
-            localStorage.setItem('ingresaalu','true');
-            this.router.navigate(['/alumno']);
-            if(f.user != obj.usuario && f.pass==obj.contrasenna){
-              a=0
-              console.log("Mal ingresado el usuario")
-            }
-            if(f.user == obj.usuario && f.pass!=obj.contrasenna){
-              a=2
-              console.log("Mal ingresado la contrasenna")
-            }
-            if(f.user != obj.usuario && f.pass!=obj.contrasenna){
-              a=3
-              console.log("Mal ingresado todo")
-            }
-            if(obj.semestre==null){
-              a=4
-              console.log("El usuario ingreso mal su rol")
-            }
+  buscarUser(){
+    var f = this.formularioLogin.value;
+    var a=0;
+    this.usuarioservice.getDatos().then(datos=>{ 
+      this.usuarios = datos; 
+      if (!datos || datos.length==0){
+        return null;
+      }
+      for (let obj of this.usuarios){
+        if (f.user == obj.usuario && f.pass==obj.contrasenna){
+          a=1;
+          console.log('ingresado');     
+          this.router.navigate(['/alumno']);
+          if(f.user != obj.usuario && f.pass==obj.contrasenna){
+            a=0
+            console.log("Mal ingresado el usuario")
           }
-        }//findelfor
-        if(a==0){
-          this.alertMsg2();
+          if(f.user == obj.usuario && f.pass!=obj.contrasenna){
+            a=2
+            console.log("Mal ingresado la contrasenna")
+          }
+          if(f.user != obj.usuario && f.pass!=obj.contrasenna){
+            a=3
+            console.log("Mal ingresado todo")
+          }
+          // if(obj.semestre==null){
+          //   a=4
+          //   console.log("El usuario ingreso mal su rol")
+          // }
         }
-        else if(a==3){
-          this.alertMsg1();
-        }
-        else if(a==2){
-          this.alertMsg3();
-        }
-        else if(a==4){
-          this.alertMsg4();
-        }
-      })
-    }//findelmetodo
+      }//findelfor
+      if(a==0){
+        this.alertMsg2();
+      }
+      else if(a==3){
+        this.alertMsg1();
+      }
+      else if(a==2){
+        this.alertMsg3();
+      }
+      else if(a==4){
+        this.alertMsg4();
+      }
+    })
+  }//findelmetodo
     async alertMsg1(){
       const alert = await this.alertcontroller.create({
         header: '¡Error!',

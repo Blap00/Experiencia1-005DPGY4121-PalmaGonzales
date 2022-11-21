@@ -17,15 +17,10 @@ export class SesaluGuard implements CanActivate {
         this.router.navigate(['/alumno'])
         return true;
       }
-      else if(localStorage.getItem('ingresapro')){
-        this.router.navigate(['/inicio-inicio'])
-        return false;
-      }
       else{
-        this.router.navigate(['/inicio'])
-        return false;
+          this.router.navigate(['/inicio'])
+          return false;
       }
-      return true;
   }
   
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular'; 
+import { MenuController, NavController } from '@ionic/angular'; 
 import { AlertController} from '@ionic/angular';
 import { Router } from '@angular/router';
 @Component({
@@ -19,10 +19,25 @@ export class HdeClasesPage implements OnInit {
 
   constructor(private menuController: MenuController,
               private alertController: AlertController,
-              private routerLink: Router) { }
+              private routerLink: Router,
+              private navController:NavController) { }
   handlerMessage = '';
   roleMessage = '';
   ngOnInit() {
+    if(localStorage.getItem('sesnop')){
+      localStorage.setItem('ingresapro','true')
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+    }
+    else if(localStorage.getItem('ingresaalu')){
+      localStorage.removeItem('sesnop')
+      this.navController.navigateRoot(['/alumno']);
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+    }
   }
   async alerta() {
     const alert = await this.alertController.create({

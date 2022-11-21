@@ -16,14 +16,17 @@ export class SesnopGuard implements CanActivate {
         this.router.navigate(['/inicio'])
         return true;
       }
-      else if(localStorage.getItem('ingresalu')){
-        this.router.navigate(['/alumno'])
-        return false;
-      }
-      else if(localStorage.getItem('ingresapro')){
-        this.router.navigate(['/inicio-inicio'])
-        return false;
-      }
+      else{
+        if(localStorage.getItem('ingresalu')){
+          this.router.navigate(['/alumno'])
+          return false;
+        }
+        if(localStorage.getItem('ingresapro')){
+          this.router.navigate(['/inicio-inicio'])
+          return false;
+        }
+      } 
+      
   }
   
 }

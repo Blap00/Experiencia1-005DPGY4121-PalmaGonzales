@@ -16,14 +16,11 @@ export class SesproGuard implements CanActivate {
       this.router.navigate(['/inicio-inicio'])
       return true;
     }
-    else if(localStorage.getItem('ingresaalu')){
-      this.router.navigate(['/alumno'])
-      return false;
-    }
     else{
-      this.router.navigate(['/inicio'])
-      return false;
+        this.router.navigate(['/inicio'])
+        return false;
     }
+
   }
   
   

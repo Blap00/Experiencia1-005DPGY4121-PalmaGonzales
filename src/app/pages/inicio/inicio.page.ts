@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -7,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-  constructor() { }
+  constructor(private navController:NavController) { }
 
   ngOnInit() {
-    console.log(localStorage.setItem('sesnop','true'))
+    if(localStorage.getItem('sesnop')){
+      localStorage.setItem('sesnop','true')
+      localStorage.removeItem('ingresaalu')
+      localStorage.removeItem('ingresapro')
+    }
+    else if(localStorage.getItem('ingresapro')){
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+      this.navController.navigateRoot(['/inicio-inicio'])
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresapro')
+      localStorage.setItem('ingresaalu','true')
+      this.navController.navigateRoot(['/alumno'])
+    }
   }
 
 }

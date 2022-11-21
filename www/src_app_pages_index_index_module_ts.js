@@ -108,9 +108,10 @@ __webpack_require__.r(__webpack_exports__);
 // }  
 
 let IndexPage = class IndexPage {
-  constructor(alerController, routerLinks) {
+  constructor(alerController, routerLinks, navController) {
     this.alerController = alerController;
     this.routerLinks = routerLinks;
+    this.navController = navController;
     this.handlerMessage = '';
     this.roleMessage = '';
     this.correo1 = 'duocuc.cl';
@@ -142,7 +143,23 @@ let IndexPage = class IndexPage {
     })();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (localStorage.getItem('sesnop')) {
+      localStorage.setItem('sesnop', 'true');
+      localStorage.removeItem('ingresaalu');
+      localStorage.removeItem('ingresapro');
+    } else if (localStorage.getItem('ingresapro')) {
+      localStorage.removeItem('sesnop');
+      localStorage.removeItem('ingresaalu');
+      localStorage.setItem('ingresapro', 'true');
+      this.navController.navigateRoot(['/inicio-inicio']);
+    } else {
+      localStorage.removeItem('sesnop');
+      localStorage.removeItem('ingresapro');
+      localStorage.setItem('ingresaalu', 'true');
+      this.navController.navigateRoot(['/alumno']);
+    }
+  }
 
   onSubmit1() {
     this.correosplitted = this.pusuario.email.split("@", 2)[1];
@@ -168,6 +185,8 @@ IndexPage.ctorParameters = () => [{
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.AlertController
 }, {
   type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.NavController
 }];
 
 IndexPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
@@ -185,7 +204,7 @@ IndexPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core_
   \********************************************************/
 /***/ ((module) => {
 
-module.exports = "img {\n  max-width: 35%;\n}\n\n.azulito {\n  background-color: #f7d547;\n}\n\n.sep1 {\n  padding: 0.3vw;\n  border-radius: 90%;\n}\n\n.div3 {\n  height: 10px;\n}\n\n.celestito {\n  background: #9ac1d9;\n}\n\n.bodycol {\n  background-color: #012840;\n}\n\n.porque {\n  position: relative;\n  left: 27.4%;\n}\n\n.porque2 {\n  position: relative;\n  left: 7%;\n}\n\n.porque1 {\n  position: relative;\n  left: 12%;\n}\n\n.footcol {\n  background-color: #B0E9FC;\n}\n\n.ema {\n  background-color: #CCDADF;\n}\n\n.rectange5 {\n  position: absolute;\n  width: 340px;\n  height: 71px;\n  left: 9px;\n  top: 193px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGNBQUE7QUFDSjs7QUFDQTtFQUNJLHlCQUFBO0FBRUo7O0FBQUE7RUFDSSxjQUFBO0VBQ0Esa0JBQUE7QUFHSjs7QUFEQTtFQUNJLFlBQUE7QUFJSjs7QUFGQTtFQUNJLG1CQUFBO0FBS0o7O0FBRkE7RUFDSSx5QkFBQTtBQUtKOztBQUhBO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0FBTUo7O0FBSkE7RUFDSSxrQkFBQTtFQUNBLFFBQUE7QUFPSjs7QUFMQTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtBQVFKOztBQU5BO0VBQ0kseUJBQUE7QUFTSjs7QUFQQTtFQUNJLHlCQUFBO0FBVUo7O0FBUkE7RUFDSSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7QUFXSiIsImZpbGUiOiJpbmRleC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbWd7XHJcbiAgICBtYXgtd2lkdGg6IDM1JTtcclxufVxyXG4uYXp1bGl0b3tcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmN2Q1NDc7XHJcbn1cclxuLnNlcDF7XHJcbiAgICBwYWRkaW5nOiAwLjN2dztcclxuICAgIGJvcmRlci1yYWRpdXM6IDkwJTtcclxufVxyXG4uZGl2M3tcclxuICAgIGhlaWdodDoxMHB4O1xyXG59XHJcbi5jZWxlc3RpdG97XHJcbiAgICBiYWNrZ3JvdW5kOiAjOWFjMWQ5O1xyXG4gICAgXHJcbn1cclxuLmJvZHljb2x7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDEyODQwO1xyXG59XHJcbi5wb3JxdWV7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBsZWZ0OjI3LjQlO1xyXG59XHJcbi5wb3JxdWUye1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgbGVmdDo3JTtcclxufVxyXG4ucG9ycXVlMXtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIGxlZnQ6IDEyJTtcclxufVxyXG4uZm9vdGNvbHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNCMEU5RkM7XHJcbn1cclxuLmVtYXtcclxuICAgIGJhY2tncm91bmQtY29sb3I6I0NDREFERjtcclxufVxyXG4ucmVjdGFuZ2U1e1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgd2lkdGg6IDM0MHB4O1xyXG4gICAgaGVpZ2h0OiA3MXB4O1xyXG4gICAgbGVmdDogOXB4O1xyXG4gICAgdG9wOiAxOTNweDtcclxufVxyXG4gICJdfQ== */";
+module.exports = "img {\n  max-width: 35%;\n}\n\n.azulito {\n  background-color: #f7d547;\n}\n\n.sep1 {\n  padding: 0.3vw;\n  border-radius: 90%;\n}\n\n.div3 {\n  height: 10px;\n}\n\n.celestito {\n  background: #9ac1d9;\n}\n\n.bodycol {\n  background-color: #012840;\n}\n\n.porque {\n  position: relative;\n  left: 27.4%;\n}\n\n.porque2 {\n  position: relative;\n  left: 7%;\n}\n\n.porque1 {\n  position: relative;\n  left: 12%;\n}\n\n.footcol {\n  background-color: #B0E9FC;\n}\n\n.ema {\n  background-color: #CCDADF;\n}\n\n.rectange5 {\n  position: absolute;\n  width: 340px;\n  height: 71px;\n  left: 9px;\n  top: 193px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGNBQUE7QUFDSjs7QUFDQTtFQUNJLHlCQUFBO0FBRUo7O0FBQUE7RUFDSSxjQUFBO0VBQ0Esa0JBQUE7QUFHSjs7QUFEQTtFQUNJLFlBQUE7QUFJSjs7QUFGQTtFQUNJLG1CQUFBO0FBS0o7O0FBRkE7RUFDSSx5QkFBQTtBQUtKOztBQUhBO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0FBTUo7O0FBSkE7RUFDSSxrQkFBQTtFQUNBLFFBQUE7QUFPSjs7QUFMQTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtBQVFKOztBQU5BO0VBQ0kseUJBQUE7QUFTSjs7QUFQQTtFQUNJLHlCQUFBO0FBVUo7O0FBUkE7RUFDSSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7QUFXSiIsImZpbGUiOiJpbmRleC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbWd7XG4gICAgbWF4LXdpZHRoOiAzNSU7XG59XG4uYXp1bGl0b3tcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjdkNTQ3O1xufVxuLnNlcDF7XG4gICAgcGFkZGluZzogMC4zdnc7XG4gICAgYm9yZGVyLXJhZGl1czogOTAlO1xufVxuLmRpdjN7XG4gICAgaGVpZ2h0OjEwcHg7XG59XG4uY2VsZXN0aXRve1xuICAgIGJhY2tncm91bmQ6ICM5YWMxZDk7XG4gICAgXG59XG4uYm9keWNvbHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDEyODQwO1xufVxuLnBvcnF1ZXtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgbGVmdDoyNy40JTtcbn1cbi5wb3JxdWUye1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICBsZWZ0OjclO1xufVxuLnBvcnF1ZTF7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIGxlZnQ6IDEyJTtcbn1cbi5mb290Y29se1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNCMEU5RkM7XG59XG4uZW1he1xuICAgIGJhY2tncm91bmQtY29sb3I6I0NDREFERjtcbn1cbi5yZWN0YW5nZTV7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHdpZHRoOiAzNDBweDtcbiAgICBoZWlnaHQ6IDcxcHg7XG4gICAgbGVmdDogOXB4O1xuICAgIHRvcDogMTkzcHg7XG59XG4gICJdfQ== */";
 
 /***/ }),
 
@@ -195,7 +214,7 @@ module.exports = "img {\n  max-width: 35%;\n}\n\n.azulito {\n  background-color:
   \********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <div class=\"sep1\">\r\n    <ion-toolbar color=\" azulito\">\r\n      <ion-buttons slot=\"start\">\r\n        <ion-back-button></ion-back-button>\r\n      </ion-buttons>\r\n      <ion-title ><p style=\"position: relative;left: -1%;font-size: 110%;color: #2D4596;\">Registrapp</p><p><img src=\"assets/aaa1.jpg\" alt=\"Logo\" style=\"width:15%; position: absolute; top: 5%; right: 5%;\"></p></ion-title>\r\n    </ion-toolbar>\r\n  </div>\r\n  <div class=\"sep1\">\r\n  <ion-toolbar color=\" azulito\" style=\"width: 100%;height: 45px;left: 0px;top: 0px;padding-top: 0;\">\r\n    <ion-card-subtitle ><p style=\"text-align: center; top: -4px;\" ><a href=\"https://www.duoc.cl/\"><img src=\"assets/pngegg.png\" alt=\"DUOCUC\" style=\"width: 60%; height: 60%; padding-top: -10%;\" class=\"ion-image1\" ></a></p></ion-card-subtitle>\r\n  </ion-toolbar>\r\n  </div>\r\n  <div class=\"sep1\">\r\n  <ion-toolbar style=\"width: 100%;\r\n  height: 34px;\r\n  left: 0px;\r\n  top: 0px;\r\n  padding-top: 0;\" color=\" celestito\">\r\n    <ion-card-subtitle style=\" top: -4px; padding-top: 0px;\"><p style=\"text-align: start; color: black;\">Registrarme</p></ion-card-subtitle>\r\n  </ion-toolbar>\r\n  </div>\r\n</ion-header>\r\n<ion-content scroll=\"false\">\r\n  <!-- body -->\r\n  <ion-toolbar style=\"width: 100%; height: 97.6%; padding-top: 5vw;\" color=\" bodycol\">\r\n    <!-- Creamos form solamente para ingresar correo -->\r\n    <form #formulario=\"ngForm\" >\r\n      <div class=\"ema\">\r\n        <ion-item  style=\"opacity: 75%; text-align: center;\">\r\n          <ion-label position=\"floating\" >E-Mail <ion-text color=\"danger\">*</ion-text></ion-label>\r\n          <ion-input required type=\"email\" placeholder=\"Introduzca su mail Institucional\" name=\"email\" [(ngModel)]=\"pusuario.email\" pattern=\"^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z\\.]{6,20})([.])([a-zA-Z]{2,5})$\"></ion-input>\r\n        </ion-item>\r\n      </div>\r\n      <ion-button (click)=\"onSubmit1();\" (onSubmit)=\"onSubmit1();\" [disabled] =\"formulario.invalid\"  class=\"porque\" color=\"tertiary\" fill=\"outline\" size=\"small\" shape=\"round\" >\r\n        Registrarme\r\n      </ion-button>\r\n    </form>\r\n    <ion-row>   \r\n      <ion-col>     \r\n        <ion-button routerLink=\"/nec-ayu\" class=\"porque1\" color=\"tertiary\" fill=\"clear\" size=\"default\" shape=\"round\" type=\"submit\" >\r\n          ¿Necesitas ayuda?\r\n        </ion-button>\r\n      </ion-col> \r\n    </ion-row>\r\n  </ion-toolbar>\r\n  <ion-toolbar style=\"width: 100%; height: 10px;\" color=\" celestito\">\r\n  </ion-toolbar>\r\n  \r\n</ion-content>\r\n";
+module.exports = "<ion-header>\n  <div class=\"sep1\">\n    <ion-toolbar color=\" azulito\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button></ion-back-button>\n      </ion-buttons>\n      <ion-title ><p style=\"position: relative;left: -1%;font-size: 110%;color: #2D4596;\">Registrapp</p><p><img src=\"assets/ScanMe.jpeg\" alt=\"Logo\" style=\"width:9%; position: absolute; top: 5%; right: 5%;\"></p></ion-title>\n    </ion-toolbar>\n  </div>\n  <div class=\"sep1\">\n  <ion-toolbar color=\" azulito\" style=\"width: 100%;height: 45px;left: 0px;top: 0px;padding-top: 0;\">\n    <ion-card-subtitle ><p style=\"text-align: center; top: -4px;\" ><a href=\"https://www.duoc.cl/\"><img src=\"assets/pngegg.png\" alt=\"DUOCUC\" style=\"width: 60%; height: 60%; padding-top: -10%;\" class=\"ion-image1\" ></a></p></ion-card-subtitle>\n  </ion-toolbar>\n  </div>\n  <div class=\"sep1\">\n  <ion-toolbar style=\"width: 100%;\n  height: 34px;\n  left: 0px;\n  top: 0px;\n  padding-top: 0;\" color=\" celestito\">\n    <ion-card-subtitle style=\" top: -4px; padding-top: 0px;\"><p style=\"text-align: start; color: black;\">Registrarme</p></ion-card-subtitle>\n  </ion-toolbar>\n  </div>\n</ion-header>\n<ion-content scroll=\"false\">\n  <!-- body -->\n  <ion-toolbar style=\"width: 100%; height: 97.6%; padding-top: 5vw;\" color=\" bodycol\">\n    <!-- Creamos form solamente para ingresar correo -->\n    <form #formulario=\"ngForm\" >\n      <div class=\"ema\">\n        <ion-item  style=\"opacity: 75%; text-align: center;\">\n          <ion-label position=\"floating\" >E-Mail <ion-text color=\"danger\">*</ion-text></ion-label>\n          <ion-input required type=\"email\" placeholder=\"Introduzca su mail Institucional\" name=\"email\" [(ngModel)]=\"pusuario.email\" pattern=\"^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z\\.]{6,20})([.])([a-zA-Z]{2,5})$\"></ion-input>\n        </ion-item>\n      </div>\n      <ion-button (click)=\"onSubmit1();\" (onSubmit)=\"onSubmit1();\" [disabled] =\"formulario.invalid\"  class=\"porque\" color=\"tertiary\" fill=\"outline\" size=\"small\" shape=\"round\" >\n        Registrarme\n      </ion-button>\n    </form>\n    <ion-row>   \n      <ion-col>     \n        <ion-button routerLink=\"/nec-ayu\" class=\"porque1\" color=\"tertiary\" fill=\"clear\" size=\"default\" shape=\"round\" type=\"submit\" >\n          ¿Necesitas ayuda?\n        </ion-button>\n      </ion-col> \n    </ion-row>\n  </ion-toolbar>\n  <ion-toolbar style=\"width: 100%; height: 10px;\" color=\" celestito\">\n  </ion-toolbar>\n  \n</ion-content>\n";
 
 /***/ })
 

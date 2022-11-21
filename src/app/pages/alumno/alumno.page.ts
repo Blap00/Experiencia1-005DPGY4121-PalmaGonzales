@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular'; 
+import { MenuController, NavController } from '@ionic/angular'; 
+import { UsuarioAluService, Datos } from 'src/app/services/usuario-alu.service';
 
 @Component({
   selector: 'app-alumno',
@@ -7,10 +8,28 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./alumno.page.scss'],
 })
 export class AlumnoPage implements OnInit {
-
-  constructor(private menuController : MenuController) { }
-
+  usuarios: Datos[]
+  constructor(private menuController : MenuController, private navController:NavController) { }
+  
   ngOnInit() {
+    
+    if(localStorage.getItem('sesnop')){
+      localStorage.removeItem('sesnop')
+      localStorage.setItem('ingresaalu','true')
+      localStorage.removeItem('ingresapro')
+    }
+    else if(localStorage.getItem('ingresapro')){
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+      
+      this.navController.navigateRoot(['/inicio-inicio'])
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresapro')
+      localStorage.setItem('ingresaalu','true')
+    }
   }
   mostrarMenu(){
 

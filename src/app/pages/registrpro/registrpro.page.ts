@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core'; 
 import { UsuarioAluService, Datos } from 'src/app/services/usuario-alu.service';
-import { Platform, ToastController, IonList } from '@ionic/angular';
+import { Platform, ToastController, IonList, NavController } from '@ionic/angular';
 // import { JsonUsers } from '../../models/json-users';
 // import { ApiAlmJsonService } from '../../services/api-alm-json.service';
 // import { ApiAlmJson } from 'src/app/interface/interfaceAlu';
@@ -61,6 +61,7 @@ export class RegistrproPage implements OnInit {
     private storageService: UsuarioAluService,
     private plt: Platform, private toastController: ToastController,
     private alertController : AlertController,
+    private navController:NavController,
     private fb: FormBuilder  
     
     ) {
@@ -232,7 +233,23 @@ async showToast(msg){
 }
 
   ngOnInit() {
-    
+    if(localStorage.getItem('sesnop')){
+      localStorage.setItem('sesnop','true')
+      localStorage.removeItem('ingresaalu')
+      localStorage.removeItem('ingresapro')
+    }
+    else if(localStorage.getItem('ingresapro')){
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+      this.navController.navigateRoot(['/inicio-inicio'])
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresapro')
+      localStorage.setItem('ingresaalu','true')
+      this.navController.navigateRoot(['/alumno'])
+    }
   }
     
   carrera: Carrera[]=[

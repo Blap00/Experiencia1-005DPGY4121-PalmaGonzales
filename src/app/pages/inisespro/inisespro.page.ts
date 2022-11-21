@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioAluService, Datos } from 'src/app/services/usuario-alu.service';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 interface Carrera{
@@ -22,7 +22,7 @@ interface Semestre{
 export class InisesproPage implements OnInit {
   formularioLogin: FormGroup;
   usuarios : Datos[] = [];
-  constructor(private usuarioservice: UsuarioAluService, private router: Router, private alertcontroller:AlertController, 
+  constructor(private usuarioservice: UsuarioAluService, private router: Router, private alertcontroller:AlertController, private navController:NavController, 
     private fb: FormBuilder) { 
       this.formularioLogin = this.fb.group({ 
         'user' : new FormControl("", Validators.required),
@@ -74,6 +74,23 @@ export class InisesproPage implements OnInit {
     
   ];
   ngOnInit() {    
+    if(localStorage.getItem('sesnop')){
+      localStorage.setItem('sesnop','true')
+      localStorage.removeItem('ingresaalu')
+      localStorage.removeItem('ingresapro')
+    }
+    else if(localStorage.getItem('ingresapro')){
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+      this.navController.navigateRoot(['/inicio-inicio'])
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresapro')
+      localStorage.setItem('ingresaalu','true')
+      this.navController.navigateRoot(['/alumno'])
+    }
   }
   buscarUser(){
     var f = this.formularioLogin.value;
@@ -87,8 +104,6 @@ export class InisesproPage implements OnInit {
         if (f.user == obj.usuario && f.pass==obj.contrasenna){
           a=1;
           console.log('ingresado');
-          console.log(localStorage.clear());
-          localStorage.setItem('ingresapro','true');
           this.router.navigate(['/inicio-inicio']);
           if(f.user != obj.usuario && f.pass==obj.contrasenna){
             a=0

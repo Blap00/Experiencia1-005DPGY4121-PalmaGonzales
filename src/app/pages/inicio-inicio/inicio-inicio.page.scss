@@ -5,20 +5,23 @@ ion-content{
     background-color: #012840;
 }
 .center {
-    display: block;
     margin-left: 45px;
-    width: 50%;
-    height: 37px;
-    
+    padding-top: 11%;
+    padding-left: 16%;
+    padding-bottom: 0vw;
+    width: 40%;
+    height: 16%;
   }
 .left{
-    width: 35px;
-    margin-bottom: 10px;
-    
+    width: 9%;
+    position: absolute;
+    top: 1px;
+    right: 3px;
 }
 
 
 .titulo{
+    margin-top: -10px;
     margin-right: 25px;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

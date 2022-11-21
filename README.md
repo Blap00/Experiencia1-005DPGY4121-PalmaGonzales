@@ -1,8 +1,8 @@
-Experiencia 2
+Experiencia 3
 
 ionic start proy Blank --type=angular
 
-import src and API to PROYECT
+import src, android, www and e2e to PROYECT
 
 COMANDOS EN COMAND PROMT
 
@@ -24,17 +24,35 @@ $ npm install cordova-plugin-camera-preview
 
 $ npm install @awesome-cordova-plugins/camera-preview
 
+
+--QRCODE
+
+$ npm install angularx-qrcode --save
+
+--RUN E2E Test
+
+$ npm run e2e
+
+
 --ionic cap sync
 
 $ ionic cap sync
 
---instalar JSON-server
-
-$ npm install -g json-server
 
 
-para iniciar servidor Restapi utilizar siguientes comandos en COMMAND PROMPT
 
+para iniciar servidor en Chrome y habilitar en ANDROID STUDIO:
+
+-   CHROME
 $ ionic serve --lab
 
-$ json-server --watch API/data.json
+-   ANDROID
+
+$ ionic cap add ANDROID
+
+$ ionic BUILD
+
+$ ionic cap sync ANDROID
+
+$ ionic cap Open ANDROID
+

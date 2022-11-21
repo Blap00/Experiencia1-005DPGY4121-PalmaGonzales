@@ -1,7 +1,7 @@
 import { Component, OnInit   } from '@angular/core';
 // import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { MenuController } from '@ionic/angular'; 
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 // import { CameraPreview  } from '@awesome-cordova-plugins/camera-preview/ngx';
 // import { CameraService } from '../../services/camera.service'; //terminar despues
 
@@ -13,10 +13,27 @@ import { AlertController } from '@ionic/angular';
 export class EscanearqrPage implements OnInit {
 
   constructor(private menuController : MenuController,
-    private alertController: AlertController,
+    private alertController: AlertController, private navController:NavController
     ) { }
 
   ngOnInit() {
+    if(localStorage.getItem('sesnop')){
+      localStorage.setItem('sesnop','true')
+      localStorage.removeItem('ingresaalu')
+      localStorage.removeItem('ingresapro')
+      this.navController.navigateRoot(['/inicio']);
+    }
+    else if(localStorage.getItem('ingresapro')){
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresaalu')
+      localStorage.setItem('ingresapro','true')
+      this.navController.navigateRoot(['/inicio-inicio'])
+    }
+    else{
+      localStorage.removeItem('sesnop')
+      localStorage.removeItem('ingresapro')
+      localStorage.setItem('ingresaalu','true')
+    }
   }
   // tomarFoto(){
   //   const options: CameraOptions = {

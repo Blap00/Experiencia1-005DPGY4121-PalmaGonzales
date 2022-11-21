@@ -16,13 +16,38 @@
 
 <ion-content>
 
-  <p class="ttexto">Codigo QR</p>
-  <ion-card>
-    <img src="/assets/qr.png">
-    <p class="texto">Codigo del QR: 9502</p>
-    <p class="texto">indique al alumno que escanee este codigo qr, de lo contrario utilize el codigo debajo de este
+  <!-- <p class="ttexto">Codigo QR</p> -->
+  <ion-card class="ion-text-center">
+    <form #formulario="ngForm">
+      <ion-item>
+        <ion-label position="floating">Usuario<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input name="nom"[(ngModel)]="usua.nom" placeholder="Ingrese su nombre de Usuario" required type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label  position="floating" color="primary" >Asignatura: <ion-text color="danger">*</ion-text></ion-label>
+          <ion-select required color="blanquito" name="Class"  placeholder="ASIGNATURA:" [(ngModel)]="usua.Class">
+            <ion-select-option color="primary" *ngFor="let c of asigna"  [value]="[c.NomASI]">{{c.NomASI}}</ion-select-option>          </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label  position="floating" color="primary" >Horario: <ion-text color="danger">*</ion-text></ion-label>
+          <ion-select required color="blanquito" name="Horar"  placeholder="seleccione su Horario" [(ngModel)]="usua.Horar">
+            <ion-select-option color="primary" *ngFor="let c of hora"  [value]="[c.Horario]">{{c.Horario}}</ion-select-option>          </ion-select>
+      </ion-item>
+        <qrcode [qrdata]="qrCodeString" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+        <ion-button [disabled] ="formulario.invalid" (click)="generarQR()" expand="block" fill="outline" shape="round">
+          generarQR
+        </ion-button>
+      <ion-button (click)="VerQR()" expand="block" fill="outline" shape="round">
+        ver QR
+      </ion-button>
+    </form>
+    <ion-item>
+      <ion-label class="ion-text-wrap">Scan Result: {{scannedResult}}</ion-label>
+    </ion-item>
 
-    </p>
+    <!-- <p class="texto">Codigo del QR: 9502</p>
+    <p class="texto">indique al alumno que escanee este codigo qr, de lo contrario utilize el codigo debajo de este -->
+
   </ion-card>
 
 
