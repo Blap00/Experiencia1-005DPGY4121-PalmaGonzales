@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeriadoService } from 'src/app/services/feriado.service';
+import { Data } from 'src/app/interfaces/int-feriados';
 import { MenuController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-feriados-alu',
@@ -7,7 +8,7 @@ import { MenuController, NavController } from '@ionic/angular';
   styleUrls: ['./feriados-alu.page.scss'],
 })
 export class FeriadosAluPage implements OnInit {
-  feriado: any;
+  feriado: Data[] = [];
   constructor(private feriadosService: FeriadoService, private menuController:MenuController, private navController:NavController) { }
 
   ngOnInit() {
@@ -28,10 +29,16 @@ export class FeriadosAluPage implements OnInit {
       localStorage.removeItem('ingresapro')
       localStorage.setItem('ingresaalu','true')
     }
-    this.feriadosService.getFeriados().subscribe(resp => {
-      this.feriado = resp;
-      //this.feriado.push('feriados', resp); //no tira error aqui pero si al compilar
-    });
+    this.feriadosService.getFeriados().subscribe(resp =>{
+      console.log('feriado: ', resp);
+      this.feriado.push(...resp.data)
+    })
+
+    // this.feriadosService.getFeriados().subscribe(resp => {
+    //   console.log(resp)
+    //   this.feriado = resp;
+    //   //this.feriado.push('feriados', resp); //no tira error aqui pero si al compilar
+    // });
   }
   mostrarMenu(){
     this.menuController.open('second');
