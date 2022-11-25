@@ -5,13 +5,20 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.deepCss('app-root ion-content')).getText();
+  getIonicWork() {
+    return element(by.css('app-root')).getText();
   }
 
-  // getTitleText(){
-  //   return element(by.css('app-root h1')).getText();
-  // }
+  getSCSSSep2(){
+    return element(by.css('app-root .sep2')).getText();
+  }
+  getSCSSSep(){
+    return element(by.css('app-root .sep2')).getText();
+  }
+  getSCSSBodycol(){
+    return element(by.css('app-root .bodycol')).getText();
+  }
+  
   // async getTitleTexth2():Promise<string>{
   //   return element(by.css('app-root h2')).getText();
   // }

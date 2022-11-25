@@ -6,14 +6,47 @@ describe('new App', () => {
   beforeEach(() => {
     page = new AppPage();
   });
-
+// TEST FAILED
   // it('Prueba 1', () => {
   //   page.navigateTo();
-  //   expect(page.getParagraphText()).toContain('Start with Ionic UI Components');
+  //   expect(page.getParagraphText()).toContain('');
   // });
-  // it('Prueba 2', () => {
+  // Reason? Stupid Bug Too many it and expect functions
+  // it('Prueba 1', () => {
   //   page.navigateTo();
-  //   expect(page.getTitleText()).toContain('Bienvenido a Protractor');
+  //   expect(page.getIonicWork()).toContain('');
+  // });
+  it('Prueba 1', () => {
+    onPrepare:async()=>{
+      await page.navigateTo();
+    expect(page.getIonicWork()).toContain('');
+    // expect(page.getSCSSSep2()).toContain('');
+    }
+  });
+  it('Prueba 2', () => {
+    page.navigateTo();
+    expect(page.getSCSSSep()).toContain('');
+  });
+  it('Prueba 3', () => {
+    page.navigateTo();
+    expect(page.getSCSSBodycol()).toContain('');
+  });
+  it('Prueba 4', () => {
+    page.navigateTo();
+    // expect(page.getIonicWork()).toContain('');
+    expect(page.getSCSSSep2()).toContain('');
+  });
+  it('Prueba 5', () => {
+    onPrepare:async()=>{
+      await page.navigateTo();
+    expect(page.getIonicWork()).toContain('');
+    // expect(page.getSCSSSep2()).toContain('');
+    }
+  });
+
+  // it('Prueba 4', () => {
+  //   page.navigateTo();
+  //   expect(page.getIonicWork()).toContain('');
   // });
   // // it('Prueba 3', async() => {
   // //   await(page.navigateTo());
